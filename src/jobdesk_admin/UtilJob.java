@@ -14,11 +14,22 @@ import java.util.Date;
  */
 public class UtilJob {
 
+    
+    String namabulan[]={"Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"};
+    
+    public String GetNamabulan(String bulan){
+    
+        return namabulan[Integer.parseInt(bulan)];
+    
+    }
+    
     public String GetDate(String i) {
         
         DateFormat dateFormat = null;
         
         Date date = new Date();
+        
+        
         
         if (i.equals("full")) {
             dateFormat = new SimpleDateFormat("yyyy-MM-dd");

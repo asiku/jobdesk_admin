@@ -36,14 +36,14 @@ public class frm_login extends javax.swing.JFrame {
             
             dat = new Crud_Job();
 
-            dat.readRec_selesai();
+            dat.readRec_selesai(tgl.GetDate("tahun")+"-"+tgl.GetDate("bulan"));
             
             dat.readRec();
             
             lbl_aprove.setText(Crud_Job.apv);
              lbl_selesai.setText(Crud_Job.fin);
              
-             lbl_tanggal.setText("Tanggal : "+ tgl.GetDate("full"));
+             lbl_tanggal.setText("Job List Di bulan : "+ tgl.GetNamabulan(tgl.GetDate("bulan")) + " / "+  tgl.GetDate("full"));
 
         } catch (Exception e2) {
             // TODO Auto-generated catch block
@@ -125,7 +125,7 @@ public class frm_login extends javax.swing.JFrame {
         jTable1.setRowHeight(30);
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Data Keseluruhan"));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/jobdesk_admin/notepad-2.png"))); // NOI18N
 
@@ -200,7 +200,7 @@ public class frm_login extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
                     .addComponent(lbl_tanggal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -242,7 +242,7 @@ public class frm_login extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 37, Short.MAX_VALUE))
+                .addGap(0, 36, Short.MAX_VALUE))
         );
 
         pack();
