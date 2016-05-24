@@ -201,7 +201,7 @@ public class Crud_Job extends DBkoneksi {
             
             ResultSet resultSet = preparedStatement.executeQuery();
             
-       
+       //teswa
      // System.out.println(resultSet.getRow());
 
         int i = 0;
