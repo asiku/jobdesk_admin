@@ -259,7 +259,7 @@ public class Crud_Job extends DBkoneksi {
     public void readRec() throws SQLException {
 
         preparedStatement = 
-    connect.prepareStatement("SELECT * FROM v_hit");
+    connect.prepareStatement("SELECT * FROM v_hit2");
 
          
          
