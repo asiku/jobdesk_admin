@@ -33,7 +33,8 @@ public class frm_login extends javax.swing.JFrame {
         try {
             
             UtilJob tgl=new UtilJob();
-            
+             lbl_tanggal.setText("Job List Di bulan : "+ tgl.GetNamabulan(tgl.GetDate("bulan")) + " / "+  tgl.GetDate("full"));
+             
             dat = new Crud_Job();
 
             dat.readRec_selesai(tgl.GetDate("tahun")+"-"+tgl.GetDate("bulan"));
@@ -43,7 +44,7 @@ public class frm_login extends javax.swing.JFrame {
             lbl_aprove.setText(Crud_Job.apv);
              lbl_selesai.setText(Crud_Job.fin);
              
-             lbl_tanggal.setText("Job List Di bulan : "+ tgl.GetNamabulan(tgl.GetDate("bulan")) + " / "+  tgl.GetDate("full"));
+            
 
         } catch (Exception e2) {
             // TODO Auto-generated catch block

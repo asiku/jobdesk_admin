@@ -252,6 +252,8 @@ public class Crud_Job extends DBkoneksi {
           
           modelselesai.addRow(new Object[]{no, username, fin,apv,afin,aapv});
         }
+        
+        
     }
     
     
