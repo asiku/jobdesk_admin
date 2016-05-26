@@ -23,6 +23,23 @@ public class UtilJob {
     
     }
     
+     public String GetAngkaBulan(int a) {
+
+        int i = a + 1;
+        String ga = "";
+        if (i > 9) {
+            
+            ga=String.valueOf(i);
+            
+        } else {
+
+            ga = "0"+i;
+
+        }
+
+        return ga;
+    }
+    
     public String GetDate(String i) {
         
         DateFormat dateFormat = null;

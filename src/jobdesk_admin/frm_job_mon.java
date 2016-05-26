@@ -21,6 +21,7 @@ import java.util.logging.Logger;
 import java.util.regex.PatternSyntaxException;
 
 import javax.swing.JOptionPane;
+import javax.swing.JSpinner;
 import javax.swing.RowFilter;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
@@ -41,7 +42,7 @@ public class frm_job_mon extends javax.swing.JFrame {
     private boolean cedit=false;
     private Date tgledit;
     private String jobnum;
-    
+    private  UtilJob tgl=new UtilJob();
     /**
      * Creates new form frm_job_mon
      */
@@ -54,18 +55,18 @@ public class frm_job_mon extends javax.swing.JFrame {
             dat = new Crud_Job();
             dat.readRecPIC();
 
-            UtilJob tgl=new UtilJob();
+           txt_tahun.setEditor(new JSpinner.NumberEditor(txt_tahun,"#"));
             
-            txt_tahun.setText(tgl.GetDate("tahun"));
+            txt_tahun.setValue(Integer.parseInt(tgl.GetDate("tahun")));
             
             dat = new Crud_Job();
             dat.readRec_selesai(tgl.GetDate("tahun")+"-"+tgl.GetDate("bulan"));
             
             
-           tbl_users.setModel(dat.modelselesai);
+            tbl_users.setModel(dat.modelselesai);
            
-           
-           dat = new Crud_Job();
+          
+            dat = new Crud_Job();
             dat.readRec();
             
             lbl_aprove.setText(Crud_Job.apv);
@@ -174,8 +175,8 @@ public class frm_job_mon extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         txt_cari_desc = new javax.swing.JTextField();
         lbl_tgl_activ = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
-        txt_tahun = new javax.swing.JTextField();
+        cmb_cari_bulan = new javax.swing.JComboBox();
+        txt_tahun = new javax.swing.JSpinner();
         jPanel2 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -619,9 +620,18 @@ public class frm_job_mon extends javax.swing.JFrame {
 
         lbl_tgl_activ.setText(" ");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember" }));
+        cmb_cari_bulan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember" }));
+        cmb_cari_bulan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_cari_bulanActionPerformed(evt);
+            }
+        });
 
-        txt_tahun.setText("jTextField1");
+        txt_tahun.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                txt_tahunStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -643,7 +653,7 @@ public class frm_job_mon extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lbl_tgl_activ, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(82, 82, 82)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmb_cari_bulan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txt_tahun)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -668,7 +678,7 @@ public class frm_job_mon extends javax.swing.JFrame {
                         .addGap(9, 9, 9)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_tgl_activ)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmb_cari_bulan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_tahun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(9, 9, 9)
                         .addComponent(jScrollPane5))
@@ -1505,6 +1515,16 @@ private void CekGantiPass(){
        // ck_aprove.setSelected(false);
     }//GEN-LAST:event_ck_selesaiActionPerformed
 
+    private void cmb_cari_bulanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_cari_bulanActionPerformed
+        // TODO add your handling code here:
+        cari_filter();
+    }//GEN-LAST:event_cmb_cari_bulanActionPerformed
+
+    private void txt_tahunStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_txt_tahunStateChanged
+        // TODO add your handling code here:
+         cari_filter();
+    }//GEN-LAST:event_txt_tahunStateChanged
+
     private Date ConvStrToDate(String tgl) {
 
 
@@ -1686,6 +1706,27 @@ private void CekGantiPass(){
         return ck;
     }
 
+    private void cari_filter(){
+        try {
+            dat = new Crud_Job();
+            
+          
+            
+           // int i=cmb_cari_bulan.getSelectedIndex()+1;
+            
+             dat.readRec_selesai(txt_tahun.getValue()+"-"+tgl.GetAngkaBulan(cmb_cari_bulan.getSelectedIndex()));
+               tbl_users.setModel(dat.modelselesai);
+               
+               System.out.println(txt_tahun.getValue()+"-"+tgl.GetAngkaBulan(cmb_cari_bulan.getSelectedIndex()));
+        } catch (Exception ex) {
+            Logger.getLogger(frm_job_mon.class.getName()).log(Level.SEVERE, null, ex);
+        }
+         
+      
+    
+    }
+    
+    
     private void cls() {
 
 
@@ -1720,11 +1761,11 @@ private void CekGantiPass(){
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JCheckBox ck_aprove;
     private javax.swing.JCheckBox ck_selesai;
+    private javax.swing.JComboBox cmb_cari_bulan;
     private javax.swing.JComboBox cmb_pic;
     private com.toedter.calendar.JDateChooser dt_cari_creation;
     private com.toedter.calendar.JDateChooser dt_req;
     private com.toedter.calendar.JDateChooser dt_target;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1791,7 +1832,7 @@ private void CekGantiPass(){
     private javax.swing.JPasswordField txt_pwd_baru;
     private javax.swing.JPasswordField txt_pwd_lama;
     private javax.swing.JTextArea txt_remark;
-    private javax.swing.JTextField txt_tahun;
+    private javax.swing.JSpinner txt_tahun;
     private javax.swing.JTextField txt_username;
     // End of variables declaration//GEN-END:variables
 }
