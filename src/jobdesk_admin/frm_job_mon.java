@@ -69,6 +69,9 @@ public class frm_job_mon extends javax.swing.JFrame {
             dat = new Crud_Job();
             dat.readRec();
             
+             dat = new Crud_Job();
+            dat.readRec1();
+            
             lbl_aprove.setText(Crud_Job.apv);
             lbl_selesai.setText(Crud_Job.fin);
              

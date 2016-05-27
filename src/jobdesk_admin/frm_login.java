@@ -39,9 +39,14 @@ public class frm_login extends javax.swing.JFrame {
 
             dat.readRec_selesai(tgl.GetDate("tahun")+"-"+tgl.GetDate("bulan"));
             
+           //  dat = new Crud_Job();
             dat.readRec();
             
             lbl_aprove.setText(Crud_Job.apv);
+            
+//             dat = new Crud_Job();
+         dat.readRec1();
+             
              lbl_selesai.setText(Crud_Job.fin);
              
             
