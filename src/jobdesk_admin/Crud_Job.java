@@ -226,7 +226,7 @@ public class Crud_Job extends DBkoneksi {
         // preparedStatement = connect.prepareStatement("SELECT * FROM v_tbl_flag");
          
         preparedStatement = connect.prepareStatement("SELECT * FROM " + v_result_helper.TB_NAME+" where "+
-                v_result_helper.KEY_DATE_CREATION+" like ?");
+                v_result_helper.KEY_DATE_CREATION+" like ? group by "+ v_result_helper.KEY_USER);
         preparedStatement.setString(1, "%" + tahunbulan + "%");
             //preparedStatement.setString(1, "no");
             //preparedStatement.setString(2, "no");
@@ -281,7 +281,7 @@ public class Crud_Job extends DBkoneksi {
 
             //String no = String.valueOf(i);
           //  String username = resultSet.getString(user_helper.KEY_USER);
-             fin = resultSet.getString(v_result_helper.KEY_BSELESAI);
+            // fin = resultSet.getString(v_result_helper.KEY_BSELESAI);
             apv = resultSet.getString(v_result_helper.KEY_BAPROVE);
             
           
@@ -289,6 +289,36 @@ public class Crud_Job extends DBkoneksi {
         }
     }
 
+     public void readRec1() throws SQLException {
+
+        preparedStatement = 
+    connect.prepareStatement("SELECT * FROM v_hit1");
+
+         
+         
+            //preparedStatement.setString(1, "no");
+            //preparedStatement.setString(2, "no");
+            
+            ResultSet resultSet = preparedStatement.executeQuery();
+            
+       
+     // System.out.println(resultSet.getRow());
+
+       // int i = 0;
+
+        while (resultSet.next()) {
+
+            //i++;
+
+            //String no = String.valueOf(i);
+          //  String username = resultSet.getString(user_helper.KEY_USER);
+             fin = resultSet.getString(v_result_helper.KEY_BSELESAI);
+            //apv = resultSet.getString(v_result_helper.KEY_BAPROVE);
+            
+          
+        //  modelselesai.addRow(new Object[]{no, username, fin,apv});
+        }
+    }
     public void readRecStat(String stat, int opt,String username) throws SQLException {
 
         if (opt == 0) {
