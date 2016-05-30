@@ -352,10 +352,11 @@ public class Crud_Job extends DBkoneksi {
 
             }
         } else {
-            preparedStatement = connect.prepareStatement("select * from " + job_helper.TB_NAME
-                    + " where " + job_helper.KEY_STAT_APROVE + "=?");
+             preparedStatement = connect.prepareStatement("select * from " + job_helper.TB_NAME
+                    + " where " + job_helper.KEY_STAT_SELESAI + "=? and "+job_helper.KEY_USERNAME+"=?");
 
             preparedStatement.setString(1, stat);
+            preparedStatement.setString(2, username);
             ResultSet resultSet = preparedStatement.executeQuery();
 
 
