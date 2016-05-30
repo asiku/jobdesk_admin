@@ -80,8 +80,7 @@ public class frm_job_mon extends javax.swing.JFrame {
             Logger.getLogger(frm_job_mon.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        cmb_pic.setModel(dat.picmodel);
-        lbl_tgl_cur.setDate(Getcurdate());
+        
      //   refreshtbl();
         
      //   refreshtblxs();
@@ -180,7 +179,7 @@ public class frm_job_mon extends javax.swing.JFrame {
         bt_cetak_pertgl1 = new javax.swing.JButton();
         dt_cetak_pertgl = new com.toedter.calendar.JDateChooser();
         cmb_cari_bulan_cetak = new javax.swing.JComboBox();
-        txt_tahun_cetak = new javax.swing.JSpinner();
+        txt_tahun1 = new javax.swing.JSpinner();
         lbl_tgl_activ = new javax.swing.JLabel();
         cmb_cari_bulan = new javax.swing.JComboBox();
         txt_tahun = new javax.swing.JSpinner();
@@ -192,30 +191,6 @@ public class frm_job_mon extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         txt_pwd_baru = new javax.swing.JPasswordField();
         bt_save2 = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txt_job_desc = new javax.swing.JTextArea();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        cmb_pic = new javax.swing.JComboBox();
-        dt_req = new com.toedter.calendar.JDateChooser();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        dt_target = new com.toedter.calendar.JDateChooser();
-        txt_finish = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        sp_priorty = new com.toedter.components.JSpinField();
-        jLabel7 = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        txt_remark = new javax.swing.JTextArea();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        bt_save = new javax.swing.JButton();
-        bt_batal = new javax.swing.JButton();
-        bt_delete = new javax.swing.JButton();
-        lbl_tgl_cur = new com.toedter.calendar.JDateChooser();
-        lbl_user = new javax.swing.JLabel();
 
         mnu_edit.setText("Edit");
         mnu_edit.addActionListener(new java.awt.event.ActionListener() {
@@ -569,9 +544,9 @@ public class frm_job_mon extends javax.swing.JFrame {
             }
         });
 
-        txt_tahun_cetak.addChangeListener(new javax.swing.event.ChangeListener() {
+        txt_tahun1.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                txt_tahun_cetakStateChanged(evt);
+                txt_tahun1StateChanged(evt);
             }
         });
 
@@ -608,7 +583,7 @@ public class frm_job_mon extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(cmb_cari_bulan_cetak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_tahun_cetak, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txt_tahun1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(bt_cetak_pertgl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bt_cetak_pertgl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(dt_cetak_pertgl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -633,7 +608,7 @@ public class frm_job_mon extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cmb_cari_bulan_cetak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_tahun_cetak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txt_tahun1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -790,193 +765,6 @@ public class frm_job_mon extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Ubah Password", jPanel2);
 
-        txt_job_desc.setColumns(20);
-        txt_job_desc.setLineWrap(true);
-        txt_job_desc.setRows(5);
-        jScrollPane1.setViewportView(txt_job_desc);
-
-        jLabel1.setText("Job Description");
-
-        jLabel2.setText("Pic");
-
-        jLabel3.setText("Request");
-
-        jLabel4.setText("Target");
-
-        jLabel6.setText("Finish");
-
-        jLabel5.setText("Priorty Number");
-
-        jLabel7.setText("Remark / Status");
-
-        txt_remark.setColumns(20);
-        txt_remark.setLineWrap(true);
-        txt_remark.setRows(5);
-        txt_remark.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txt_remarkKeyPressed(evt);
-            }
-        });
-        jScrollPane2.setViewportView(txt_remark);
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jTable1MousePressed(evt);
-            }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                jTable1MouseReleased(evt);
-            }
-        });
-        jScrollPane3.setViewportView(jTable1);
-
-        bt_save.setText("Save");
-        bt_save.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_saveActionPerformed(evt);
-            }
-        });
-
-        bt_batal.setText("Batal");
-        bt_batal.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_batalActionPerformed(evt);
-            }
-        });
-
-        bt_delete.setText("Delete All");
-        bt_delete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_deleteActionPerformed(evt);
-            }
-        });
-
-        lbl_tgl_cur.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lbl_tgl_curMouseClicked(evt);
-            }
-        });
-        lbl_tgl_cur.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                lbl_tgl_curPropertyChange(evt);
-            }
-        });
-
-        lbl_user.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        lbl_user.setText("User Name :");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(sp_priorty, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(cmb_pic, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(dt_req, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(dt_target, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(txt_finish)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                .addComponent(bt_save, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(bt_batal, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(bt_delete, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 915, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 4, Short.MAX_VALUE)))
-                        .addGap(35, 35, 35))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(lbl_user, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 545, Short.MAX_VALUE)
-                        .addComponent(lbl_tgl_cur, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(48, 48, 48))))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_user)
-                            .addComponent(lbl_tgl_cur, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(bt_save)
-                            .addComponent(bt_batal)
-                            .addComponent(bt_delete)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmb_pic, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(dt_req, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(dt_target, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_finish, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(sp_priorty, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(209, Short.MAX_VALUE))
-        );
-
-        jTabbedPane2.addTab("Task Project", jPanel4);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -998,7 +786,7 @@ public class frm_job_mon extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        lbl_user.setText(username);
+        txt_username.setText(username);
     }//GEN-LAST:event_formWindowOpened
 
     
@@ -1061,30 +849,8 @@ private void CekGantiPass(){
 
     private void mnu_editActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnu_editActionPerformed
         // TODO add your handling code here:
-        int row = jTable1.getSelectedRow();
-
-        if (row == -1) {
-            // No row selected
-        } else {
-
-            try {
-                cedit=true;
-                
-                txt_job_desc.setText(jTable1.getModel().getValueAt(row, 1).toString());
-                cmb_pic.setSelectedItem(jTable1.getModel().getValueAt(row, 2).toString());
-                dt_req.setDate(ConvStrToDate(jTable1.getModel().getValueAt(row, 3).toString()));
-                dt_target.setDate(ConvStrToDate(jTable1.getModel().getValueAt(row, 4).toString()));
-                txt_finish.setText(jTable1.getModel().getValueAt(row, 5).toString());
-                sp_priorty.setValue(Integer.parseInt(jTable1.getModel().getValueAt(row, 6).toString()));
-                txt_remark.setText(jTable1.getModel().getValueAt(row, 7).toString());
-                tgledit= convertToDateEx(jTable1.getModel().getValueAt(row, 10).toString()) ;
-                jobnum=jTable1.getModel().getValueAt(row, 11).toString() ;
-                System.out.println("edit tgl: "+tgledit);
-            } catch (ParseException ex) {
-                Logger.getLogger(frm_job_mon.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            
-        }
+     
+        
 
     }//GEN-LAST:event_mnu_editActionPerformed
 
@@ -1155,180 +921,12 @@ private void CekGantiPass(){
     
     }
     
-    private void getTblVal(){
-    
-         int row = jTable1.getSelectedRow();
-
-        if (row == -1) {
-            // No row selected
-        } else {
-
-           
-               
-                
-                txt_job_desc.setText(jTable1.getModel().getValueAt(row, 1).toString());
-                cmb_pic.setSelectedItem(jTable1.getModel().getValueAt(row, 2).toString());
-                dt_req.setDate(ConvStrToDate(jTable1.getModel().getValueAt(row, 3).toString()));
-                dt_target.setDate(ConvStrToDate(jTable1.getModel().getValueAt(row, 4).toString()));
-                txt_finish.setText(jTable1.getModel().getValueAt(row, 5).toString());
-                sp_priorty.setValue(Integer.parseInt(jTable1.getModel().getValueAt(row, 6).toString()));
-                txt_remark.setText(jTable1.getModel().getValueAt(row, 7).toString());
-              
-               
-              
-           
-        }
-    }
+   
     
     private void formMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMousePressed
         // TODO add your handling code here:
         
     }//GEN-LAST:event_formMousePressed
-
-    private void lbl_tgl_curPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lbl_tgl_curPropertyChange
-        // TODO add your handling code here:
-        if (lbl_tgl_cur.getDate() != null) {
-         //   refreshtbl();
-        }
-
-        //         int response = JOptionPane.showConfirmDialog(null, "Apakah Akan di hapus Pekerjaan di Tgl  ?", "Konfirmasi",
-            //                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-
-        System.out.println("tgl");
-    }//GEN-LAST:event_lbl_tgl_curPropertyChange
-
-    private void lbl_tgl_curMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lbl_tgl_curMouseClicked
-        // TODO add your handling code here:
-        // if (evt.getClickCount() == 2) {
-            //         lbl_tgl_cur.addPropertyChangeListener("calendar", new PropertyChangeListener() {
-                //                public void propertyChange(PropertyChangeEvent e) {
-                    //                       int response = JOptionPane.showConfirmDialog(null, "Apakah Akan di hapus Pekerjaan di Tgl  ?", "Konfirmasi",
-                        //                    JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-                    //                }
-                //            });
-        //}
-    }//GEN-LAST:event_lbl_tgl_curMouseClicked
-
-    private void bt_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_deleteActionPerformed
-        try {
-            // TODO add your handling code here:
-            int response = JOptionPane.showConfirmDialog(null, "Apakah Akan di hapus Semua Pekerjaan di Tgl " + convertToDateF(lbl_tgl_cur.getDate()) + "?", "Konfirmasi",
-                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-
-            if (response == JOptionPane.YES_OPTION) {
-                try {
-                    // TODO add your handling code here:
-                    dat = new Crud_Job();
-                    dat.DelRecAll(convertToDateF(lbl_tgl_cur.getDate()));
-                    refreshtbl();
-                } catch (Exception ex) {
-                    Logger.getLogger(frm_job_mon.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        } catch (ParseException ex) {
-            Logger.getLogger(frm_job_mon.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_bt_deleteActionPerformed
-
-    private void bt_batalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_batalActionPerformed
-        // TODO add your handling code here:
-        cls();
-    }//GEN-LAST:event_bt_batalActionPerformed
-
-    private void bt_saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_saveActionPerformed
-        try {
-            // TODO add your handling code here:
-
-            if (checktxt()) {
-
-                if(!cedit)
-                {
-
-                    dat = new Crud_Job();
-                    dat.SaveJob(txt_job_desc.getText(), cmb_pic.getSelectedItem().toString(), convertToDate(dt_req.getDate()),
-                        convertToDate(dt_target.getDate()), txt_finish.getText(), sp_priorty.getValue(), txt_remark.getText(),
-                        "no", "no", lbl_user.getText(),convertToDateF(lbl_tgl_cur.getDate()));
-
-                    refreshtbl();
-
-                    cls();
-                }
-                else{
-                    dat = new Crud_Job();
-                    //                 dat.updateJobRec(convertToDateE(tgledit),txt_job_desc.getText(), cmb_pic.getSelectedItem().toString(), convertToDate(dt_req.getDate()),
-                        //                        convertToDate(dt_target.getDate()), txt_finish.getText(), sp_priorty.getValue(), txt_remark.getText());
-
-                    dat.updateJobRec(jobnum,txt_job_desc.getText(), cmb_pic.getSelectedItem().toString(), convertToDate(dt_req.getDate()),
-                        convertToDate(dt_target.getDate()), txt_finish.getText(), sp_priorty.getValue(), txt_remark.getText());
-
-                    refreshtbl();
-                }
-
-            } else {
-
-                if (sp_priorty.getValue() == 0) {
-
-                    JOptionPane.showMessageDialog(null, "Priorty Number 0");
-                } else {
-                    JOptionPane.showMessageDialog(null, "Text Ada yang Kosong!");
-                }
-            }
-
-        } catch (Exception ex) {
-            Logger.getLogger(frm_job_mon.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        //System.out.println(dt_req.getDate().toString());
-    }//GEN-LAST:event_bt_saveActionPerformed
-
-    private void jTable1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseReleased
-        // TODO add your handling code here:
-
-        System.out.println("tes");
-
-        if (evt.isPopupTrigger()) {
-
-            int row = jTable1.getSelectedRow();
-
-            if (row == -1) {
-                // No row selected
-            } else {
-                popup_mnu.show(jTable1, evt.getX(), evt.getY());
-                idhps = (jTable1.getModel().getValueAt(row, 10).toString());
-                System.out.println(idhps);
-            }
-
-        }
-    }//GEN-LAST:event_jTable1MouseReleased
-
-    private void jTable1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MousePressed
-        // TODO add your handling code here:
-
-        if(evt.getClickCount()==2){
-            getTblVal();
-        }
-
-        if (evt.isPopupTrigger()) {
-            int row = jTable1.getSelectedRow();
-
-            if (row == -1) {
-                // No row selected
-            } else {
-                popup_mnu.show(jTable1, evt.getX(), evt.getY());
-                idhps = (jTable1.getModel().getValueAt(row, 10).toString());
-                System.out.println(idhps);
-            }
-
-        }
-    }//GEN-LAST:event_jTable1MousePressed
-
-    private void txt_remarkKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_remarkKeyPressed
-        // TODO add your handling code here:
-
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            bt_save.requestFocus();
-        }
-    }//GEN-LAST:event_txt_remarkKeyPressed
 
     private void bt_save2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_save2ActionPerformed
         // TODO add your handling code here:
@@ -1340,65 +938,48 @@ private void CekGantiPass(){
         }
     }//GEN-LAST:event_bt_save2ActionPerformed
 
-    private void bt_cetak_pertglActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cetak_pertglActionPerformed
+    private void txt_tahunStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_txt_tahunStateChanged
+        // TODO add your handling code here:
+        cari_filter();
+    }//GEN-LAST:event_txt_tahunStateChanged
+
+    private void cmb_cari_bulanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_cari_bulanActionPerformed
+        // TODO add your handling code here:
+        cari_filter();
+    }//GEN-LAST:event_cmb_cari_bulanActionPerformed
+
+    private void txt_tahun1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_txt_tahun1StateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_tahun1StateChanged
+
+    private void cmb_cari_bulan_cetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_cari_bulan_cetakActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmb_cari_bulan_cetakActionPerformed
+
+    private void bt_cetak_pertgl1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cetak_pertgl1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_cetak_pertgl1ActionPerformed
+
+    private void txt_cari_descKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cari_descKeyReleased
         // TODO add your handling code here:
 
-        // convertToDateF
+        filtertbl();
 
-        if(dt_cetak_pertgl.getDate()!=null)  {
-            try {
-                dat = new Crud_Job();
+    }//GEN-LAST:event_txt_cari_descKeyReleased
 
-                dat.CetakPerTgl(convertToDateF(dt_cetak_pertgl.getDate()));
-
-            } catch (Exception e2) {
-                // TODO Auto-generated catch block
-                e2.printStackTrace();
-            }
-        }
-        else{
-
-            JOptionPane.showMessageDialog(null, "Tanggal Pencarian Kosong!");
-        }
-
-    }//GEN-LAST:event_bt_cetak_pertglActionPerformed
-
-    private void bt_cetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cetakActionPerformed
+    private void txt_cari_descKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cari_descKeyPressed
         // TODO add your handling code here:
 
-        //if(dt_cari_creation.getDate()!=null)  {
-            try {
-                dat = new Crud_Job();
+    }//GEN-LAST:event_txt_cari_descKeyPressed
 
-                dat.CetakAll();
-
-            } catch (Exception e2) {
-                // TODO Auto-generated catch block
-                e2.printStackTrace();
-            }
-            //}
-        //   else{
-
-            //   JOptionPane.showMessageDialog(null, "Tanggal Pencarian Kosong!");
-            //  }
-    }//GEN-LAST:event_bt_cetakActionPerformed
-
-    private void bt_refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_refreshActionPerformed
-        
-         dt_cari_creation.setDate(null);
-       
-          refUser();
-          reftbl();
-    }//GEN-LAST:event_bt_refreshActionPerformed
-
-    private void dt_cari_creationPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_dt_cari_creationPropertyChange
+    private void txt_cari_descPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txt_cari_descPropertyChange
         // TODO add your handling code here:
-        if (dt_cari_creation.getDate() != null) {
-            refreshtblx();
-           // dt_cari_creation.setDate(null);
-            //System.out.print("K filter");
-        }
-    }//GEN-LAST:event_dt_cari_creationPropertyChange
+
+    }//GEN-LAST:event_txt_cari_descPropertyChange
+
+    private void txt_cari_descActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cari_descActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_cari_descActionPerformed
 
     private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
         // TODO add your handling code here:
@@ -1435,7 +1016,6 @@ private void CekGantiPass(){
         } catch (Exception ex) {
             Logger.getLogger(frm_job_mon.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
@@ -1449,36 +1029,164 @@ private void CekGantiPass(){
         } catch (Exception ex) {
             Logger.getLogger(frm_job_mon.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void dt_cari_creationPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_dt_cari_creationPropertyChange
+        // TODO add your handling code here:
+        if (dt_cari_creation.getDate() != null) {
+            refreshtblx();
+            // dt_cari_creation.setDate(null);
+            //System.out.print("K filter");
+        }
+    }//GEN-LAST:event_dt_cari_creationPropertyChange
+
+    private void bt_refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_refreshActionPerformed
+
+        dt_cari_creation.setDate(null);
+
+        refUser();
+        reftbl();
+    }//GEN-LAST:event_bt_refreshActionPerformed
+
+    private void bt_cetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cetakActionPerformed
+        // TODO add your handling code here:
+
+        //if(dt_cari_creation.getDate()!=null)  {
+            try {
+                dat = new Crud_Job();
+
+                dat.CetakAll();
+
+            } catch (Exception e2) {
+                // TODO Auto-generated catch block
+                e2.printStackTrace();
+            }
+            //}
+        //   else{
+
+            //   JOptionPane.showMessageDialog(null, "Tanggal Pencarian Kosong!");
+            //  }
+    }//GEN-LAST:event_bt_cetakActionPerformed
+
+    private void bt_cetak_pertglActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cetak_pertglActionPerformed
+        // TODO add your handling code here:
+
+        // convertToDateF
+
+        if(dt_cetak_pertgl.getDate()!=null)  {
+            try {
+                dat = new Crud_Job();
+
+                dat.CetakPerTgl(convertToDateF(dt_cetak_pertgl.getDate()));
+
+            } catch (Exception e2) {
+                // TODO Auto-generated catch block
+                e2.printStackTrace();
+            }
+        }
+        else{
+
+            JOptionPane.showMessageDialog(null, "Tanggal Pencarian Kosong!");
+        }
+    }//GEN-LAST:event_bt_cetak_pertglActionPerformed
+
+    private void ck_selesaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ck_selesaiActionPerformed
+        // TODO add your handling code here:
+        // ck_aprove.setSelected(false);
+
+        //begin
+        int row = jTable2.getSelectedRow();
+
+        try {
+
+            dat = new Crud_Job();
+
+            if (row != -1) {
+                if(dat.CekRecaprove(jTable2.getModel().getValueAt(row, 11).toString()).equals("ok")){
+
+                    int response = JOptionPane.showConfirmDialog(null, "Apakah Akan di Set Selesai Pekerjaan ini " + lbl_job_desc.getText() + " ?", "Konfirmasi",
+                        JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+                    if (response == JOptionPane.YES_OPTION) {
+
+                        dat = new Crud_Job();
+                        dat.updateAprove(jTable2.getModel().getValueAt(row, 11).toString(),"ok",1);
+                        getUser();
+
+                        //refresh status
+                        dt_cari_creation.setDate(null);
+                        reftbl();
+
+                    }//end edit
+                }
+
+                else{
+
+                    JOptionPane.showMessageDialog(null,"Tidak bisa di Set Selesai karena Belum di Aprove");
+                    ck_selesai.setSelected(false);
+
+                }
+                //end
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(frm_job_mon.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }//GEN-LAST:event_ck_selesaiActionPerformed
+
+    private void ck_aproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ck_aproveActionPerformed
+        // TODO add your handling code here:
+        //  ck_selesai.setSelected(false);
+        //System.out.println("Ck aprove");
+
+        int response = JOptionPane.showConfirmDialog(null, "Apakah Akan di Aprove Pekerjaan ini " + lbl_job_desc.getText() + " ?", "Konfirmasi",
+            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+        if (response == JOptionPane.YES_OPTION) {
+
+            int row = jTable2.getSelectedRow();
+
+            if (row != -1) {
+
+                try {
+                    // TODO add your handling code here:
+                    dat = new Crud_Job();
+                    dat.updateAprove(jTable2.getModel().getValueAt(row, 11).toString(),"ok",0);
+                    getUser();
+
+                    //refresh status
+                    dt_cari_creation.setDate(null);
+                    reftbl();
+
+                } catch (Exception ex) {
+                    Logger.getLogger(frm_job_mon.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+
+        }
+
+    }//GEN-LAST:event_ck_aproveActionPerformed
 
     private void lbl_remarkKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lbl_remarkKeyPressed
         // TODO add your handling code here:
     }//GEN-LAST:event_lbl_remarkKeyPressed
 
+    private void jTable2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MousePressed
+        // TODO add your handling code here:
+
+        if(evt.getClickCount()==2){
+            getTblActiv();
+        }
+
+    }//GEN-LAST:event_jTable2MousePressed
+
     private void tbl_usersMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbl_usersMouseReleased
         // TODO add your handling code here:
-        
+
         if(evt.getClickCount()==2){
             getUser();
         }
     }//GEN-LAST:event_tbl_usersMouseReleased
-
-    private void jTable2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MousePressed
-        // TODO add your handling code here:
-        
-      
-        if(evt.getClickCount()==2){
-            getTblActiv();
-        }
-                
-    }//GEN-LAST:event_jTable2MousePressed
-
-    private void txt_cari_descPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_txt_cari_descPropertyChange
-        // TODO add your handling code here:
-        
-      
-    }//GEN-LAST:event_txt_cari_descPropertyChange
 
     private void filtertbl(){
         try {
@@ -1518,127 +1226,6 @@ private void CekGantiPass(){
       
     }
     
-    private void txt_cari_descKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cari_descKeyPressed
-        // TODO add your handling code here:
-      
-          
-    }//GEN-LAST:event_txt_cari_descKeyPressed
-
-    private void txt_cari_descKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cari_descKeyReleased
-        // TODO add your handling code here:
-       
-          filtertbl();
-        
-    }//GEN-LAST:event_txt_cari_descKeyReleased
-
-    private void txt_cari_descActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_cari_descActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_cari_descActionPerformed
-
-    private void ck_aproveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ck_aproveActionPerformed
-        // TODO add your handling code here:
-      //  ck_selesai.setSelected(false);
-        //System.out.println("Ck aprove");
-        
-        int response = JOptionPane.showConfirmDialog(null, "Apakah Akan di Aprove Pekerjaan ini " + lbl_job_desc.getText() + " ?", "Konfirmasi",
-                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-
-        if (response == JOptionPane.YES_OPTION) {
-
-            int row = jTable2.getSelectedRow();
-
-        if (row != -1) {
-       
-       
-        try {
-                // TODO add your handling code here:
-                dat = new Crud_Job();
-                dat.updateAprove(jTable2.getModel().getValueAt(row, 11).toString(),"ok",0);
-                getUser();
-                
-                //refresh status
-                dt_cari_creation.setDate(null);
-                reftbl();
-                
-            } catch (Exception ex) {
-                Logger.getLogger(frm_job_mon.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } 
-        
-            
-        }
-        
-    }//GEN-LAST:event_ck_aproveActionPerformed
-
-    private void ck_selesaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ck_selesaiActionPerformed
-        // TODO add your handling code here:
-       // ck_aprove.setSelected(false);
-        
-   //begin
-   int row = jTable2.getSelectedRow();
-         
-    try {     
-      
-        
-         dat = new Crud_Job();
-     
-      if (row != -1) {          
-       if(dat.CekRecaprove(jTable2.getModel().getValueAt(row, 11).toString()).equals("ok")){
-                
-               int response = JOptionPane.showConfirmDialog(null, "Apakah Akan di Set Selesai Pekerjaan ini " + lbl_job_desc.getText() + " ?", "Konfirmasi",
-                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-
-            if (response == JOptionPane.YES_OPTION) {
-         
-
-                        dat = new Crud_Job();
-                        dat.updateAprove(jTable2.getModel().getValueAt(row, 11).toString(),"ok",1);
-                        getUser();
-
-                         //refresh status
-                        dt_cari_creation.setDate(null);
-                        reftbl();
-                 
-                    
-             }//end edit
-         }
-        
-         else{
-              
-                 JOptionPane.showMessageDialog(null,"Tidak bisa di Set Selesai karena Belum di Aprove");
-                 ck_selesai.setSelected(false);
-             
-             }
-             //end
-           } 
-        } catch (Exception ex) {
-                Logger.getLogger(frm_job_mon.class.getName()).log(Level.SEVERE, null, ex);
-        }
-       
-    }//GEN-LAST:event_ck_selesaiActionPerformed
-
-    private void cmb_cari_bulanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_cari_bulanActionPerformed
-        // TODO add your handling code here:
-        cari_filter();
-    }//GEN-LAST:event_cmb_cari_bulanActionPerformed
-
-    private void txt_tahunStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_txt_tahunStateChanged
-        // TODO add your handling code here:
-         cari_filter();
-    }//GEN-LAST:event_txt_tahunStateChanged
-
-    private void bt_cetak_pertgl1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cetak_pertgl1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bt_cetak_pertgl1ActionPerformed
-
-    private void cmb_cari_bulan_cetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_cari_bulan_cetakActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmb_cari_bulan_cetakActionPerformed
-
-    private void txt_tahun_cetakStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_txt_tahun_cetakStateChanged
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_tahun_cetakStateChanged
-
     private Date ConvStrToDate(String tgl) {
 
 
@@ -1695,7 +1282,7 @@ private void CekGantiPass(){
         try {
             dat = new Crud_Job();
 
-            dat.readRec(convertToDateF(lbl_tgl_cur.getDate()));
+//            dat.readRec(convertToDateF(lbl_tgl_cur.getDate()));
 
             dat.readRec_selesai();
             
@@ -1707,7 +1294,7 @@ private void CekGantiPass(){
             e2.printStackTrace();
         }
 
-        jTable1.setModel(dat.model);
+    //    jTable1.setModel(dat.model);
         
        // tbl_users.setModel(dat.modelselesai);
         
@@ -1798,27 +1385,7 @@ private void CekGantiPass(){
         return strDate;
     }
 
-    private boolean checktxt() {
-
-        boolean ck = false;
-
-//        if ((txt_job_desc.getText().isEmpty()
-//                && cmb_pic.getSelectedItem().toString().isEmpty()
-//                && dt_req.getDate().toString().isEmpty()
-//                && dt_target.getDate().toString().isEmpty() && txt_finish.getText().isEmpty()
-//                && String.valueOf(sp_priorty.getValue()).isEmpty())) {
-//            ck = true;
-//
-//        }
-//booleatn g=dt_req.getDate().toString().isEmpty();
-        if (dt_req.getDate() != null && dt_target.getDate() != null && sp_priorty.getValue() != 0
-                && !txt_job_desc.getText().isEmpty() && !txt_finish.getText().isEmpty()) {
-            ck = true;
-
-        }
-
-        return ck;
-    }
+   
 
     private void cari_filter(){
         try {
@@ -1875,24 +1442,21 @@ private void CekGantiPass(){
             }
         }
 
-        sp_priorty.setValue(0);
+//        sp_priorty.setValue(0);
 
         jobnum="";
         
-        dt_req.setDate(null);
-        dt_target.setDate(null);
-        txt_job_desc.setText("");
-        txt_remark.setText("");
+//        dt_req.setDate(null);
+//        dt_target.setDate(null);
+//        txt_job_desc.setText("");
+//        txt_remark.setText("");
 
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bt_batal;
     private javax.swing.JButton bt_cetak;
     private javax.swing.JButton bt_cetak_pertgl;
     private javax.swing.JButton bt_cetak_pertgl1;
-    private javax.swing.JButton bt_delete;
     private javax.swing.JButton bt_refresh;
-    private javax.swing.JButton bt_save;
     private javax.swing.JButton bt_save2;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
@@ -1900,12 +1464,8 @@ private void CekGantiPass(){
     private javax.swing.JCheckBox ck_selesai;
     private javax.swing.JComboBox cmb_cari_bulan;
     private javax.swing.JComboBox cmb_cari_bulan_cetak;
-    private javax.swing.JComboBox cmb_pic;
     private com.toedter.calendar.JDateChooser dt_cari_creation;
     private com.toedter.calendar.JDateChooser dt_cetak_pertgl;
-    private com.toedter.calendar.JDateChooser dt_req;
-    private com.toedter.calendar.JDateChooser dt_target;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1916,36 +1476,25 @@ private void CekGantiPass(){
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JRadioButton jRadioButton4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JLabel lbl_aprove;
     private javax.swing.JLabel lbl_finish;
@@ -1957,22 +1506,16 @@ private void CekGantiPass(){
     private javax.swing.JLabel lbl_selesai;
     private javax.swing.JLabel lbl_target;
     private javax.swing.JLabel lbl_tgl_activ;
-    private com.toedter.calendar.JDateChooser lbl_tgl_cur;
-    private javax.swing.JLabel lbl_user;
     private javax.swing.JLabel lbl_user_list;
     private javax.swing.JMenuItem mnu_delete;
     private javax.swing.JMenuItem mnu_edit;
     private javax.swing.JPopupMenu popup_mnu;
-    private com.toedter.components.JSpinField sp_priorty;
     private javax.swing.JTable tbl_users;
     private javax.swing.JTextField txt_cari_desc;
-    private javax.swing.JTextField txt_finish;
-    private javax.swing.JTextArea txt_job_desc;
     private javax.swing.JPasswordField txt_pwd_baru;
     private javax.swing.JPasswordField txt_pwd_lama;
-    private javax.swing.JTextArea txt_remark;
     private javax.swing.JSpinner txt_tahun;
-    private javax.swing.JSpinner txt_tahun_cetak;
+    private javax.swing.JSpinner txt_tahun1;
     private javax.swing.JTextField txt_username;
     // End of variables declaration//GEN-END:variables
 }
