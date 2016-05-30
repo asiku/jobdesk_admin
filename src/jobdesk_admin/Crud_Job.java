@@ -47,6 +47,9 @@ public class Crud_Job extends DBkoneksi {
     public static String apv="";
     public static String fin="";
     
+    
+    public static String cekaprove="";
+    
     String[] titles = new String[]{"No", "Job Description", "Pic", "Request", "Target", "Finish", "Priorty Number", "Remark/Status", "Aprove", "Status Selesai", "Date Creation","Job Num"};
     
     String[]titleselesai = new String[]{"No", "User Name", "Belum Selesai","Belum Aprove","Selesai","Aprove"};
@@ -74,6 +77,31 @@ public class Crud_Job extends DBkoneksi {
         }
     };
 
+     
+     public String CekRecaprove(String jobnum) throws SQLException {
+
+        
+          preparedStatement = connect.prepareStatement("select * from " + job_helper.TB_NAME
+                + " where " + job_helper.KEY_JOB_NUM + " =?");
+
+       
+         preparedStatement.setString(1,jobnum);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+
+        while (resultSet.next()) {
+            
+             cekaprove = resultSet.getString(job_helper.KEY_STAT_APROVE);
+    
+        }
+        
+        return cekaprove;
+    }
+     
+     
+     
+     
+     
     public void updateAprove(String jobnum, String stat,int opt) {
 
         try {

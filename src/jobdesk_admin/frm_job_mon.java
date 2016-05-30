@@ -872,11 +872,11 @@ public class frm_job_mon extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                                 .addComponent(bt_save, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
                                 .addComponent(bt_batal, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(18, 18, 18)
                                 .addComponent(bt_delete, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(504, 504, 504))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 915, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 4, Short.MAX_VALUE)))
@@ -1536,32 +1536,48 @@ private void CekGantiPass(){
     private void ck_selesaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ck_selesaiActionPerformed
         // TODO add your handling code here:
        // ck_aprove.setSelected(false);
-           int response = JOptionPane.showConfirmDialog(null, "Apakah Akan di Set Selesai Pekerjaan ini " + lbl_job_desc.getText() + " ?", "Konfirmasi",
-                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-
-        if (response == JOptionPane.YES_OPTION) {
-
-            int row = jTable2.getSelectedRow();
-
-        if (row != -1) {
-       
-       
-        try {
-                // TODO add your handling code here:
-                dat = new Crud_Job();
-                dat.updateAprove(jTable2.getModel().getValueAt(row, 11).toString(),"ok",1);
-                getUser();
-                
-                 //refresh status
-                dt_cari_creation.setDate(null);
-                reftbl();
-            } catch (Exception ex) {
-                Logger.getLogger(frm_job_mon.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } 
         
-            
+   //begin
+   int row = jTable2.getSelectedRow();
+         
+    try {     
+      
+        
+         dat = new Crud_Job();
+     
+      if (row != -1) {          
+       if(dat.CekRecaprove(jTable2.getModel().getValueAt(row, 11).toString()).equals("ok")){
+                
+               int response = JOptionPane.showConfirmDialog(null, "Apakah Akan di Set Selesai Pekerjaan ini " + lbl_job_desc.getText() + " ?", "Konfirmasi",
+                 JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+            if (response == JOptionPane.YES_OPTION) {
+         
+
+                        dat = new Crud_Job();
+                        dat.updateAprove(jTable2.getModel().getValueAt(row, 11).toString(),"ok",1);
+                        getUser();
+
+                         //refresh status
+                        dt_cari_creation.setDate(null);
+                        reftbl();
+                 
+                    
+             }//end edit
+         }
+        
+         else{
+              
+                 JOptionPane.showMessageDialog(null,"Tidak bisa di Set Selesai karena Belum di Aprove");
+                 ck_selesai.setSelected(false);
+             
+             }
+             //end
+           } 
+        } catch (Exception ex) {
+                Logger.getLogger(frm_job_mon.class.getName()).log(Level.SEVERE, null, ex);
         }
+       
     }//GEN-LAST:event_ck_selesaiActionPerformed
 
     private void cmb_cari_bulanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_cari_bulanActionPerformed
