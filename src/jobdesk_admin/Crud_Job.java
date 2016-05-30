@@ -718,4 +718,23 @@ resultSet.last();
         JasperViewer.viewReport(jp, false);
 
     }
+    
+   
+  public void CetakPerBulan(String tgl) throws JRException {
+
+        InputStream is = null;
+        is = getClass().getResourceAsStream("report3.jrxml");
+
+        //set parameters
+        Map map = new HashMap();
+        map.put("tgl_r", tgl);
+       // map.put("Imgpath",null);
+
+        JasperReport jr = JasperCompileManager.compileReport(is);
+
+        JasperPrint jp = JasperFillManager.fillReport(jr, map, connect);
+
+        JasperViewer.viewReport(jp, false);
+
+    }  
 }

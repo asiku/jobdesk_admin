@@ -55,9 +55,14 @@ public class frm_job_mon extends javax.swing.JFrame {
             dat = new Crud_Job();
             dat.readRecPIC();
 
-           txt_tahun.setEditor(new JSpinner.NumberEditor(txt_tahun,"#"));
+            txt_tahun.setEditor(new JSpinner.NumberEditor(txt_tahun,"#"));
             
             txt_tahun.setValue(Integer.parseInt(tgl.GetDate("tahun")));
+            
+//            txt_tahun_cetak.setEditor(new JSpinner.NumberEditor(txt_tahun_cetak,"#"));
+//            
+//            txt_tahun_cetak.setValue(Integer.parseInt(tgl.GetDate("tahun")));
+            
             
             dat = new Crud_Job();
             dat.readRec_selesai(tgl.GetDate("tahun")+"-"+tgl.GetDate("bulan"));
@@ -176,13 +181,13 @@ public class frm_job_mon extends javax.swing.JFrame {
         jRadioButton4 = new javax.swing.JRadioButton();
         jLabel23 = new javax.swing.JLabel();
         txt_cari_desc = new javax.swing.JTextField();
-        bt_cetak_pertgl1 = new javax.swing.JButton();
+        bt_cetak_perbulan = new javax.swing.JButton();
         dt_cetak_pertgl = new com.toedter.calendar.JDateChooser();
-        cmb_cari_bulan_cetak = new javax.swing.JComboBox();
-        txt_tahun1 = new javax.swing.JSpinner();
+        dt_cetak_perbulan = new com.toedter.calendar.JDateChooser();
         lbl_tgl_activ = new javax.swing.JLabel();
         cmb_cari_bulan = new javax.swing.JComboBox();
         txt_tahun = new javax.swing.JSpinner();
+        jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -273,6 +278,7 @@ public class frm_job_mon extends javax.swing.JFrame {
 
         jPanel5.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        lbl_job_desc.setEditable(false);
         lbl_job_desc.setColumns(20);
         lbl_job_desc.setLineWrap(true);
         lbl_job_desc.setRows(5);
@@ -314,6 +320,7 @@ public class frm_job_mon extends javax.swing.JFrame {
         jLabel22.setForeground(new java.awt.Color(0, 102, 102));
         jLabel22.setText("Remark / Status");
 
+        lbl_remark.setEditable(false);
         lbl_remark.setColumns(20);
         lbl_remark.setLineWrap(true);
         lbl_remark.setRows(5);
@@ -530,23 +537,10 @@ public class frm_job_mon extends javax.swing.JFrame {
             }
         });
 
-        bt_cetak_pertgl1.setText("Cetak Per Bulan");
-        bt_cetak_pertgl1.addActionListener(new java.awt.event.ActionListener() {
+        bt_cetak_perbulan.setText("Cetak Per Bulan");
+        bt_cetak_perbulan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bt_cetak_pertgl1ActionPerformed(evt);
-            }
-        });
-
-        cmb_cari_bulan_cetak.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember" }));
-        cmb_cari_bulan_cetak.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmb_cari_bulan_cetakActionPerformed(evt);
-            }
-        });
-
-        txt_tahun1.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                txt_tahun1StateChanged(evt);
+                bt_cetak_perbulanActionPerformed(evt);
             }
         });
 
@@ -571,23 +565,20 @@ public class frm_job_mon extends javax.swing.JFrame {
                             .addComponent(jRadioButton3)
                             .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jRadioButton4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(dt_cari_creation, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(bt_refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(23, 23, 23)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(cmb_cari_bulan_cetak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txt_tahun1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(bt_cetak_pertgl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bt_cetak_pertgl1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bt_cetak_perbulan, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
                     .addComponent(dt_cetak_pertgl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bt_cetak, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(bt_cetak, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(dt_cetak_perbulan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -603,12 +594,10 @@ public class frm_job_mon extends javax.swing.JFrame {
                         .addComponent(dt_cetak_pertgl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(bt_cetak_pertgl1)
+                            .addComponent(bt_cetak_perbulan)
                             .addComponent(bt_refresh))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmb_cari_bulan_cetak, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txt_tahun1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(dt_cetak_perbulan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -649,6 +638,8 @@ public class frm_job_mon extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Filter Data Berdasarkan Bulan dan Tahun");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -658,20 +649,23 @@ public class frm_job_mon extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 651, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(lbl_aprove, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
-                            .addComponent(lbl_selesai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lbl_tgl_activ, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lbl_tgl_activ, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lbl_aprove, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE)
+                                    .addComponent(lbl_selesai, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(82, 82, 82)
-                        .addComponent(cmb_cari_bulan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txt_tahun)))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(cmb_cari_bulan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txt_tahun))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -690,7 +684,8 @@ public class frm_job_mon extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel18)
-                            .addComponent(lbl_selesai, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lbl_selesai, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
                         .addGap(9, 9, 9)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_tgl_activ)
@@ -760,7 +755,7 @@ public class frm_job_mon extends javax.swing.JFrame {
                     .addComponent(txt_pwd_baru, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(bt_save2)
-                .addContainerGap(458, Short.MAX_VALUE))
+                .addContainerGap(463, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Ubah Password", jPanel2);
@@ -948,17 +943,24 @@ private void CekGantiPass(){
         cari_filter();
     }//GEN-LAST:event_cmb_cari_bulanActionPerformed
 
-    private void txt_tahun1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_txt_tahun1StateChanged
+    private void bt_cetak_perbulanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cetak_perbulanActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_tahun1StateChanged
+          if(dt_cetak_perbulan.getDate()!=null)  {
+            try {
+                dat = new Crud_Job();
 
-    private void cmb_cari_bulan_cetakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_cari_bulan_cetakActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cmb_cari_bulan_cetakActionPerformed
+                dat.CetakPerBulan(convertToDateF(dt_cetak_perbulan.getDate()));
 
-    private void bt_cetak_pertgl1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cetak_pertgl1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_bt_cetak_pertgl1ActionPerformed
+            } catch (Exception e2) {
+                // TODO Auto-generated catch block
+                e2.printStackTrace();
+            }
+        }
+        else{
+
+            JOptionPane.showMessageDialog(null, "Tanggal Pencarian Kosong!");
+        }
+    }//GEN-LAST:event_bt_cetak_perbulanActionPerformed
 
     private void txt_cari_descKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cari_descKeyReleased
         // TODO add your handling code here:
@@ -1454,8 +1456,8 @@ private void CekGantiPass(){
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_cetak;
+    private javax.swing.JButton bt_cetak_perbulan;
     private javax.swing.JButton bt_cetak_pertgl;
-    private javax.swing.JButton bt_cetak_pertgl1;
     private javax.swing.JButton bt_refresh;
     private javax.swing.JButton bt_save2;
     private javax.swing.ButtonGroup buttonGroup1;
@@ -1463,9 +1465,10 @@ private void CekGantiPass(){
     private javax.swing.JCheckBox ck_aprove;
     private javax.swing.JCheckBox ck_selesai;
     private javax.swing.JComboBox cmb_cari_bulan;
-    private javax.swing.JComboBox cmb_cari_bulan_cetak;
     private com.toedter.calendar.JDateChooser dt_cari_creation;
+    private com.toedter.calendar.JDateChooser dt_cetak_perbulan;
     private com.toedter.calendar.JDateChooser dt_cetak_pertgl;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -1515,7 +1518,6 @@ private void CekGantiPass(){
     private javax.swing.JPasswordField txt_pwd_baru;
     private javax.swing.JPasswordField txt_pwd_lama;
     private javax.swing.JSpinner txt_tahun;
-    private javax.swing.JSpinner txt_tahun1;
     private javax.swing.JTextField txt_username;
     // End of variables declaration//GEN-END:variables
 }

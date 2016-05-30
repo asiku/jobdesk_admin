@@ -97,24 +97,30 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jScrollPane5" pref="651" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="lbl_aprove" pref="99" max="32767" attributes="0"/>
-                                  <Component id="lbl_selesai" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jLabel18" max="32767" attributes="0"/>
-                                  <Component id="jLabel17" min="-2" pref="193" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="lbl_tgl_activ" min="-2" pref="310" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lbl_tgl_activ" alignment="0" min="-2" pref="310" max="-2" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="lbl_aprove" pref="99" max="32767" attributes="0"/>
+                                          <Component id="lbl_selesai" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="jLabel18" max="32767" attributes="0"/>
+                                          <Component id="jLabel17" min="-2" pref="193" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
                               <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
-                              <Component id="cmb_cari_bulan" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="txt_tahun" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Component id="cmb_cari_bulan" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                      <Component id="txt_tahun" max="32767" attributes="0"/>
+                                  </Group>
+                                  <Component id="jLabel1" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -140,6 +146,7 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="lbl_selesai" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -377,6 +384,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JTextArea" name="lbl_job_desc">
                       <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="columns" type="int" value="20"/>
                         <Property name="lineWrap" type="boolean" value="true"/>
                         <Property name="rows" type="int" value="5"/>
@@ -497,6 +505,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JTextArea" name="lbl_remark">
                       <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="columns" type="int" value="20"/>
                         <Property name="lineWrap" type="boolean" value="true"/>
                         <Property name="rows" type="int" value="5"/>
@@ -589,7 +598,7 @@
                                       <Component id="jLabel14" min="-2" pref="101" max="-2" attributes="0"/>
                                       <Component id="jRadioButton4" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace pref="19" max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="dt_cari_creation" alignment="0" min="-2" pref="151" max="-2" attributes="0"/>
                                       <Component id="jLabel13" alignment="1" min="-2" pref="151" max="-2" attributes="0"/>
@@ -600,17 +609,13 @@
                                   <Component id="bt_refresh" min="-2" pref="146" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="cmb_cari_bulan_cetak" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="txt_tahun1" min="-2" pref="55" max="-2" attributes="0"/>
-                              </Group>
+                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="bt_cetak_pertgl" max="32767" attributes="0"/>
-                              <Component id="bt_cetak_pertgl1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="bt_cetak_perbulan" alignment="0" pref="175" max="32767" attributes="0"/>
                               <Component id="dt_cetak_pertgl" alignment="1" max="32767" attributes="0"/>
                               <Component id="bt_cetak" alignment="1" max="32767" attributes="0"/>
+                              <Component id="dt_cetak_perbulan" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -629,14 +634,11 @@
                                   <Component id="dt_cetak_pertgl" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="bt_cetak_pertgl1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="bt_cetak_perbulan" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="bt_refresh" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="cmb_cari_bulan_cetak" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txt_tahun1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="dt_cetak_perbulan" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -776,43 +778,17 @@
                     <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txt_cari_descKeyReleased"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="bt_cetak_pertgl1">
+                <Component class="javax.swing.JButton" name="bt_cetak_perbulan">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Cetak Per Bulan"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_cetak_pertgl1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bt_cetak_perbulanActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="com.toedter.calendar.JDateChooser" name="dt_cetak_pertgl">
                 </Component>
-                <Component class="javax.swing.JComboBox" name="cmb_cari_bulan_cetak">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="12">
-                        <StringItem index="0" value="Januari"/>
-                        <StringItem index="1" value="Februari"/>
-                        <StringItem index="2" value="Maret"/>
-                        <StringItem index="3" value="April"/>
-                        <StringItem index="4" value="Mei"/>
-                        <StringItem index="5" value="Juni"/>
-                        <StringItem index="6" value="Juli"/>
-                        <StringItem index="7" value="Agustus"/>
-                        <StringItem index="8" value="September"/>
-                        <StringItem index="9" value="Oktober"/>
-                        <StringItem index="10" value="November"/>
-                        <StringItem index="11" value="Desember"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmb_cari_bulan_cetakActionPerformed"/>
-                  </Events>
-                </Component>
-                <Component class="javax.swing.JSpinner" name="txt_tahun1">
-                  <Events>
-                    <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="txt_tahun1StateChanged"/>
-                  </Events>
+                <Component class="com.toedter.calendar.JDateChooser" name="dt_cetak_perbulan">
                 </Component>
               </SubComponents>
             </Container>
@@ -848,6 +824,11 @@
               <Events>
                 <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="txt_tahunStateChanged"/>
               </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel1">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Filter Data Berdasarkan Bulan dan Tahun"/>
+              </Properties>
             </Component>
           </SubComponents>
         </Container>
@@ -901,7 +882,7 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="bt_save2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="458" max="32767" attributes="0"/>
+                      <EmptySpace pref="463" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
