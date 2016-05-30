@@ -1069,6 +1069,17 @@ private void CekGantiPass(){
         
     }
     
+    private void refUser(){
+        try {
+            dat=new Crud_Job();
+             dat.readJobactiv(lbl_user_list.getText());
+             jTable2.setModel(dat.model);
+        } catch (Exception ex) {
+            Logger.getLogger(frm_job_mon.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+    
+    }
     
     private void getTblActiv(){
          int row = jTable2.getSelectedRow();
@@ -1336,15 +1347,19 @@ private void CekGantiPass(){
     }//GEN-LAST:event_bt_cetakActionPerformed
 
     private void bt_refreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_refreshActionPerformed
-        // TODO add your handling code here:
-        //refreshtblxs();
-         getUser();
+        
+         dt_cari_creation.setDate(null);
+       
+          refUser();
+          reftbl();
     }//GEN-LAST:event_bt_refreshActionPerformed
 
     private void dt_cari_creationPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_dt_cari_creationPropertyChange
         // TODO add your handling code here:
         if (dt_cari_creation.getDate() != null) {
             refreshtblx();
+           // dt_cari_creation.setDate(null);
+            //System.out.print("K filter");
         }
     }//GEN-LAST:event_dt_cari_creationPropertyChange
 
@@ -1503,6 +1518,11 @@ private void CekGantiPass(){
                 dat = new Crud_Job();
                 dat.updateAprove(jTable2.getModel().getValueAt(row, 11).toString(),"ok",0);
                 getUser();
+                
+                //refresh status
+                dt_cari_creation.setDate(null);
+                reftbl();
+                
             } catch (Exception ex) {
                 Logger.getLogger(frm_job_mon.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1516,6 +1536,32 @@ private void CekGantiPass(){
     private void ck_selesaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ck_selesaiActionPerformed
         // TODO add your handling code here:
        // ck_aprove.setSelected(false);
+           int response = JOptionPane.showConfirmDialog(null, "Apakah Akan di Set Selesai Pekerjaan ini " + lbl_job_desc.getText() + " ?", "Konfirmasi",
+                JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+
+        if (response == JOptionPane.YES_OPTION) {
+
+            int row = jTable2.getSelectedRow();
+
+        if (row != -1) {
+       
+       
+        try {
+                // TODO add your handling code here:
+                dat = new Crud_Job();
+                dat.updateAprove(jTable2.getModel().getValueAt(row, 11).toString(),"ok",1);
+                getUser();
+                
+                 //refresh status
+                dt_cari_creation.setDate(null);
+                reftbl();
+            } catch (Exception ex) {
+                Logger.getLogger(frm_job_mon.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } 
+        
+            
+        }
     }//GEN-LAST:event_ck_selesaiActionPerformed
 
     private void cmb_cari_bulanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_cari_bulanActionPerformed
@@ -1729,7 +1775,29 @@ private void CekGantiPass(){
     
     }
     
-    
+    private void reftbl(){
+        try {
+            dat = new Crud_Job();
+            dat.readRec_selesai(tgl.GetDate("tahun")+"-"+tgl.GetDate("bulan"));
+            
+            
+            tbl_users.setModel(dat.modelselesai);
+           
+          
+            dat = new Crud_Job();
+            dat.readRec();
+            
+             dat = new Crud_Job();
+            dat.readRec1();
+            
+            lbl_aprove.setText(Crud_Job.apv);
+            lbl_selesai.setText(Crud_Job.fin);
+        } catch (Exception ex) {
+            Logger.getLogger(frm_job_mon.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            
+            
+    }
     private void cls() {
 
 

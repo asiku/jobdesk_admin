@@ -330,7 +330,16 @@ public class Crud_Job extends DBkoneksi {
             ResultSet resultSet = preparedStatement.executeQuery();
 
 
+            
+            resultSet.last();
+            
+            System.out.println("Capruck: "+resultSet.getRow());
+            
+            resultSet.beforeFirst();
+            
             int i = 0;
+            
+            
 
             while (resultSet.next()) {
 
@@ -353,13 +362,17 @@ public class Crud_Job extends DBkoneksi {
             }
         } else {
              preparedStatement = connect.prepareStatement("select * from " + job_helper.TB_NAME
-                    + " where " + job_helper.KEY_STAT_SELESAI + "=? and "+job_helper.KEY_USERNAME+"=?");
+                    + " where " + job_helper.KEY_STAT_APROVE + "=? and "+job_helper.KEY_USERNAME+"=?");
 
             preparedStatement.setString(1, stat);
             preparedStatement.setString(2, username);
             ResultSet resultSet = preparedStatement.executeQuery();
 
-
+resultSet.last();
+            
+            System.out.println("Capruck: "+resultSet.getRow());
+            
+            resultSet.beforeFirst();
             int i = 0;
 
             while (resultSet.next()) {
@@ -377,7 +390,7 @@ public class Crud_Job extends DBkoneksi {
                 String aprove = resultSet.getString(job_helper.KEY_STAT_APROVE);
                 String statselesai = resultSet.getString(job_helper.KEY_STAT_SELESAI);
                 String tglcreation = resultSet.getString(job_helper.KEY_DATE_CREATION);
- int jobnum = resultSet.getInt(job_helper.KEY_JOB_NUM);
+                int jobnum = resultSet.getInt(job_helper.KEY_JOB_NUM);
                 model.addRow(new Object[]{no, jobdesc, pic, req, tar, fin, pnum, remark, aprove, statselesai, tglcreation,jobnum});
 
             }
