@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bd5b3c51-f988-45dc-9b06-8bb5ecff6baf">
-	<property name="ireport.zoom" value="2.0"/>
-	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.zoom" value="3.0"/>
+	<property name="ireport.x" value="17"/>
+	<property name="ireport.y" value="43"/>
 	<parameter name="Imgpath" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[select * from jobactive]]>
+		<![CDATA[select * from jobactive where username<>'root']]>
 	</queryString>
 	<field name="jobnum" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -45,31 +45,25 @@
 	<field name="status_selesai" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<group name="Date_Creation">
-		<groupExpression><![CDATA[$F{Date_Creation}]]></groupExpression>
+	<group name="username">
+		<groupExpression><![CDATA[$F{username}]]></groupExpression>
 		<groupHeader>
-			<band height="24" splitType="Immediate">
+			<band height="35">
 				<textField>
-					<reportElement x="0" y="4" width="190" height="20" uuid="3d65f002-c5c5-4096-81a8-cf98a7c787eb"/>
-					<textFieldExpression><![CDATA[$F{Date_Creation}.substring( 0, 10 )]]></textFieldExpression>
+					<reportElement x="0" y="11" width="100" height="20" uuid="aa3230b1-953a-4132-9103-c346d2541c96"/>
+					<textFieldExpression><![CDATA[$F{username}]]></textFieldExpression>
 				</textField>
+				<line>
+					<reportElement x="0" y="31" width="555" height="1" uuid="6ba86ad9-ffcc-4020-893d-535d43605d39"/>
+				</line>
 			</band>
 		</groupHeader>
-		<groupFooter>
-			<band/>
-		</groupFooter>
 	</group>
 	<background>
 		<band/>
 	</background>
 	<title>
-		<band height="33">
-			<rectangle>
-				<reportElement x="421" y="2" width="134" height="31" uuid="5f5ef73b-abb3-4cb5-9333-cd6a71aaafd9"/>
-				<graphicElement>
-					<pen lineWidth="1.5" lineStyle="Double"/>
-				</graphicElement>
-			</rectangle>
+		<band height="34">
 			<staticText>
 				<reportElement x="218" y="2" width="100" height="20" uuid="8041ce3a-65ea-450e-b2e3-176b9238fdb8"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -77,30 +71,13 @@
 				</textElement>
 				<text><![CDATA[List Jobs]]></text>
 			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="427" y="6" width="50" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="9beeee3d-5172-4a4e-a4bd-e77cc29ce83f"/>
-				<textElement verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
-				</textElement>
-				<text><![CDATA[username :]]></text>
-			</staticText>
-			<textField isStretchWithOverflow="true">
-				<reportElement x="479" y="6" width="76" height="20" uuid="64fc2008-26e7-4e9e-875a-22c7786007e1"/>
-				<textElement verticalAlignment="Middle">
-					<font size="9"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{username}]]></textFieldExpression>
-			</textField>
 		</band>
 	</title>
 	<pageHeader>
 		<band height="11"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="21">
-			<line>
-				<reportElement x="0" y="20" width="555" height="1" forecolor="#666666" uuid="8d2cdd12-aae5-4c48-b102-9886293b8af3"/>
-			</line>
+		<band height="28">
 			<staticText>
 				<reportElement mode="Opaque" x="0" y="-1" width="40" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="17072e17-ce6e-4232-8f4e-06c6a54ffae7"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -164,68 +141,71 @@
 				</textElement>
 				<text><![CDATA[selesai]]></text>
 			</staticText>
+			<line>
+				<reportElement x="0" y="25" width="555" height="1" uuid="7d639a36-4736-4ab9-8619-023b40874ccd"/>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="20">
+		<band height="30">
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="135" y="0" width="50" height="20" uuid="ec6c6bf1-b98a-4942-9cae-d5a3be198012"/>
+				<reportElement x="135" y="8" width="50" height="20" uuid="ec6c6bf1-b98a-4942-9cae-d5a3be198012"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{pic}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="dd/MM/yy" isBlankWhenNull="true">
-				<reportElement x="190" y="0" width="50" height="20" uuid="a6640639-7977-4e9d-99ef-f8c2bfc49d35"/>
+				<reportElement x="190" y="8" width="50" height="20" uuid="a6640639-7977-4e9d-99ef-f8c2bfc49d35"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{request}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="dd/MM/yy" isBlankWhenNull="true">
-				<reportElement x="245" y="0" width="50" height="20" uuid="51e3a7a4-dc59-463f-8b04-3b956cf97394"/>
+				<reportElement x="245" y="8" width="50" height="20" uuid="51e3a7a4-dc59-463f-8b04-3b956cf97394"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{target}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="301" y="0" width="50" height="20" uuid="a237686a-7024-4a37-9e05-16e0d16bb48d"/>
+				<reportElement x="301" y="8" width="50" height="20" uuid="a237686a-7024-4a37-9e05-16e0d16bb48d"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{finish}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="357" y="0" width="28" height="20" uuid="9d054d59-6cb2-401a-a93b-e42aafa2209c"/>
+				<reportElement x="357" y="8" width="28" height="20" uuid="9d054d59-6cb2-401a-a93b-e42aafa2209c"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{priortynumber}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="393" y="0" width="84" height="20" uuid="de0e7957-a118-405c-90f5-758b63147af8"/>
+				<reportElement x="393" y="8" width="84" height="20" uuid="de0e7957-a118-405c-90f5-758b63147af8"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{remark_status}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="484" y="0" width="23" height="20" uuid="525864e0-3c4a-4f32-af74-cc25a2d12002"/>
+				<reportElement x="484" y="8" width="23" height="20" uuid="525864e0-3c4a-4f32-af74-cc25a2d12002"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{status_aprove}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="521" y="0" width="19" height="20" uuid="ef4a334e-876a-4754-9eae-29006bfe4dd4"/>
+				<reportElement x="521" y="8" width="19" height="20" uuid="ef4a334e-876a-4754-9eae-29006bfe4dd4"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{status_selesai}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="0" y="0" width="123" height="20" uuid="c0a94479-843e-464c-bb91-eca4071b5401"/>
+				<reportElement x="0" y="8" width="123" height="20" uuid="c0a94479-843e-464c-bb91-eca4071b5401"/>
 				<textElement>
 					<font size="9"/>
 				</textElement>
@@ -237,23 +217,23 @@
 		<band/>
 	</columnFooter>
 	<pageFooter>
-		<band height="17">
+		<band height="49">
 			<textField>
-				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#FFFFFF" uuid="9b159867-1ba6-430a-8e33-623661ec1d33"/>
+				<reportElement mode="Opaque" x="0" y="17" width="515" height="13" backcolor="#FFFFFF" uuid="9b159867-1ba6-430a-8e33-623661ec1d33"/>
 				<textElement textAlignment="Right">
 					<font size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
-				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#FFFFFF" uuid="bd7e9bf0-2306-4fac-93dc-6810f922585d"/>
+				<reportElement mode="Opaque" x="515" y="17" width="40" height="13" backcolor="#FFFFFF" uuid="bd7e9bf0-2306-4fac-93dc-6810f922585d"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
 				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement x="0" y="4" width="100" height="13" uuid="d3a68c01-406d-469c-ad63-c599ad75f5c9"/>
+				<reportElement x="0" y="17" width="100" height="13" uuid="d3a68c01-406d-469c-ad63-c599ad75f5c9"/>
 				<textElement>
 					<font size="7"/>
 				</textElement>
