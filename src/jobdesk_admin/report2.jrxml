@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bd5b3c51-f988-45dc-9b06-8bb5ecff6baf">
-	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.zoom" value="4.0"/>
+	<property name="ireport.x" value="1225"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="tgl_r" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
@@ -54,9 +54,12 @@ WHERE
 		<groupExpression><![CDATA[$F{Date_Creation}]]></groupExpression>
 		<groupHeader>
 			<band height="21" splitType="Immediate">
-				<textField>
-					<reportElement x="2" y="1" width="100" height="20" uuid="1f6d1ee8-b842-41c8-a4ca-7a894bd8a6a2"/>
-					<textFieldExpression><![CDATA[$F{Date_Creation}]]></textFieldExpression>
+				<textField isStretchWithOverflow="true">
+					<reportElement x="0" y="1" width="76" height="20" uuid="64fc2008-26e7-4e9e-875a-22c7786007e1"/>
+					<textElement verticalAlignment="Middle">
+						<font size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{username}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupHeader>
@@ -68,13 +71,7 @@ WHERE
 		<band/>
 	</background>
 	<title>
-		<band height="33">
-			<rectangle>
-				<reportElement x="421" y="2" width="134" height="31" uuid="5f5ef73b-abb3-4cb5-9333-cd6a71aaafd9"/>
-				<graphicElement>
-					<pen lineWidth="1.5" lineStyle="Double"/>
-				</graphicElement>
-			</rectangle>
+		<band height="41">
 			<staticText>
 				<reportElement x="218" y="2" width="100" height="20" uuid="8041ce3a-65ea-450e-b2e3-176b9238fdb8"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -82,19 +79,10 @@ WHERE
 				</textElement>
 				<text><![CDATA[List Jobs]]></text>
 			</staticText>
-			<staticText>
-				<reportElement mode="Opaque" x="427" y="6" width="50" height="20" forecolor="#006699" backcolor="#FFFFFF" uuid="9beeee3d-5172-4a4e-a4bd-e77cc29ce83f"/>
-				<textElement verticalAlignment="Middle">
-					<font size="6" isBold="true"/>
-				</textElement>
-				<text><![CDATA[username :]]></text>
-			</staticText>
-			<textField isStretchWithOverflow="true">
-				<reportElement x="479" y="6" width="76" height="20" uuid="64fc2008-26e7-4e9e-875a-22c7786007e1"/>
-				<textElement verticalAlignment="Middle">
-					<font size="9"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{username}]]></textFieldExpression>
+			<textField>
+				<reportElement x="450" y="21" width="105" height="20" uuid="1f6d1ee8-b842-41c8-a4ca-7a894bd8a6a2"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{Date_Creation}]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>
