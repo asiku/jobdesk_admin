@@ -50,7 +50,7 @@
 		<groupHeader>
 			<band height="35">
 				<textField>
-					<reportElement x="0" y="11" width="100" height="20" uuid="aa3230b1-953a-4132-9103-c346d2541c96"/>
+					<reportElement x="0" y="8" width="100" height="20" uuid="aa3230b1-953a-4132-9103-c346d2541c96"/>
 					<textFieldExpression><![CDATA[$F{username}]]></textFieldExpression>
 				</textField>
 				<line>
