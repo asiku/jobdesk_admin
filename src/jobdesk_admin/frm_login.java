@@ -32,8 +32,10 @@ public class frm_login extends javax.swing.JFrame {
 
         try {
             
+            //tgl.GetNamabulan(tgl.GetDate("bulan"))
+            
             UtilJob tgl=new UtilJob();
-             lbl_tanggal.setText("Job List Di bulan : "+ tgl.GetNamabulan(tgl.GetDate("bulan")) + " / "+  tgl.GetDate("full"));
+             lbl_tanggal.setText("Job List Di bulan : "+tgl.GetNamabulan(tgl.GetDate("bulan")) + " / "+  tgl.GetDate("full"));
              
             dat = new Crud_Job();
 
@@ -45,7 +47,7 @@ public class frm_login extends javax.swing.JFrame {
             lbl_aprove.setText(Crud_Job.apv);
             
 //             dat = new Crud_Job();
-         dat.readRec1();
+            dat.readRec1();
              
              lbl_selesai.setText(Crud_Job.fin);
              
@@ -267,10 +269,9 @@ public class frm_login extends javax.swing.JFrame {
             dat = new Crud_Job();
             
             dat.Cek(txt_username.getText());
+                        
             
-            
-            
-            if (Crud_Job.usm.equals(txt_username.getText()) && Crud_Job.psm.equals(txt_pwd.getText())) {
+            if (Crud_Job.usm.equals(txt_username.getText()) && Crud_Job.psm.equals(txt_pwd.getText()) && Crud_Job.position.equals("x-Hunter")) {
                 
                   frm_job_mon frm =new frm_job_mon(txt_username.getText());
                   //frm_job_mon.username=txt_username.getText();

@@ -19,7 +19,13 @@ public class UtilJob {
     
     public String GetNamabulan(String bulan){
     
-        return namabulan[Integer.parseInt(bulan)];
+        return namabulan[Integer.parseInt(bulan)-1];
+    
+    }
+    
+    public String ConvBulan(int bulan){
+    
+        return namabulan[bulan-1];
     
     }
     

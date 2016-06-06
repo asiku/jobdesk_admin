@@ -1,9 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bd5b3c51-f988-45dc-9b06-8bb5ecff6baf">
-	<property name="ireport.zoom" value="3.0"/>
-	<property name="ireport.x" value="17"/>
-	<property name="ireport.y" value="43"/>
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="dataset1" uuid="f573eb42-1d2b-4ef9-b42a-849ab0aa6a5d"/>
 	<parameter name="Imgpath" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="jmlaprove" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="jmlselesai" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="jmlbelumaprove" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="jmlbelumselesai" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
 	<queryString>
@@ -45,17 +58,27 @@
 	<field name="status_selesai" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<group name="username">
+	<group name="usernmmm">
 		<groupExpression><![CDATA[$F{username}]]></groupExpression>
 		<groupHeader>
 			<band height="35">
+				<rectangle radius="10">
+					<reportElement x="115" y="2" width="100" height="20" uuid="4fc70529-510b-4b9a-b2fa-37e3a96195c6"/>
+				</rectangle>
+				<rectangle radius="10">
+					<reportElement x="-1" y="3" width="100" height="20" uuid="e05b75a1-5d30-49cd-bac3-e5786f8d6ec7"/>
+				</rectangle>
 				<textField>
-					<reportElement x="0" y="8" width="100" height="20" uuid="aa3230b1-953a-4132-9103-c346d2541c96"/>
+					<reportElement x="3" y="5" width="100" height="20" uuid="12d848be-d72e-4ad6-9fe8-326ab4f5709b"/>
 					<textFieldExpression><![CDATA[$F{username}]]></textFieldExpression>
 				</textField>
 				<line>
-					<reportElement x="0" y="31" width="555" height="1" uuid="6ba86ad9-ffcc-4020-893d-535d43605d39"/>
+					<reportElement x="0" y="27" width="555" height="1" uuid="6988600d-be25-4de2-97bb-51bb60e18138"/>
 				</line>
+				<textField>
+					<reportElement x="123" y="3" width="100" height="20" uuid="c3afb6eb-24fe-480a-ab49-8dc88f93b459"/>
+					<textFieldExpression><![CDATA[$F{Date_Creation}]]></textFieldExpression>
+				</textField>
 			</band>
 		</groupHeader>
 	</group>
@@ -63,19 +86,87 @@
 		<band/>
 	</background>
 	<title>
-		<band height="34">
+		<band height="126">
 			<staticText>
-				<reportElement x="218" y="2" width="100" height="20" uuid="8041ce3a-65ea-450e-b2e3-176b9238fdb8"/>
+				<reportElement x="135" y="4" width="200" height="34" uuid="8041ce3a-65ea-450e-b2e3-176b9238fdb8"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="12" isBold="true"/>
+					<font size="24" isBold="true"/>
 				</textElement>
 				<text><![CDATA[List Jobs]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="417" y="2" width="60" height="20" uuid="0a147fbd-27db-431d-a121-8ef4405044bc"/>
+				<text><![CDATA[Total :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="418" y="24" width="34" height="20" uuid="f4238cb1-ee46-49f4-b18f-13bcd7c1d003"/>
+				<text><![CDATA[Aprove]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="419" y="48" width="34" height="20" uuid="faa398f2-80f9-490b-be54-998136cb81fc"/>
+				<text><![CDATA[Selesai]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="420" y="74" width="64" height="20" uuid="492cdc95-b4e7-474f-b004-b22e4cf6a4cf"/>
+				<text><![CDATA[Belum Aprove]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="421" y="98" width="86" height="20" uuid="7ddcd03a-0941-4edc-ba03-6158acc25122"/>
+				<text><![CDATA[Belum Selesai]]></text>
+			</staticText>
+			<line>
+				<reportElement x="419" y="45" width="131" height="1" uuid="b9a893db-bcf2-4c50-92d6-3def5a34cd14"/>
+			</line>
+			<line>
+				<reportElement x="421" y="71" width="131" height="1" uuid="fe19b83d-b555-4330-8916-c7276b1619f5"/>
+			</line>
+			<line>
+				<reportElement x="422" y="95" width="131" height="1" uuid="94cddeb8-ca44-4d2d-8fff-18f01691c4c8"/>
+			</line>
+			<line>
+				<reportElement x="421" y="120" width="131" height="1" uuid="9d146545-cfa6-44b7-9da2-49ace196ec75"/>
+			</line>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement mode="Transparent" x="507" y="18" width="43" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="33aad99d-98a1-4d4b-a5db-0bee91d24fa0"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{jmlaprove}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement mode="Transparent" x="507" y="49" width="43" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="8dd0a15b-a3f1-4bd8-b491-86edb10fa0cd"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{jmlselesai}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement mode="Transparent" x="507" y="75" width="43" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="40d238f7-2271-4c46-9fd1-9e124b233d1d"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{jmlbelumaprove}]]></textFieldExpression>
+			</textField>
+			<textField pattern="" isBlankWhenNull="false">
+				<reportElement mode="Transparent" x="509" y="102" width="43" height="20" forecolor="#000000" backcolor="#FFFFFF" uuid="ec86b889-4e98-4378-b1e3-ea803be7fff4"/>
+				<textElement textAlignment="Right" verticalAlignment="Top" rotation="None" markup="none">
+					<font fontName="SansSerif" size="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					<paragraph lineSpacing="Single"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{jmlbelumselesai}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="135" y="48" width="200" height="34" uuid="ad48994a-c757-40fd-b743-9fc47352c885"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Keseluruhan Data]]></text>
+			</staticText>
 		</band>
 	</title>
-	<pageHeader>
-		<band height="11"/>
-	</pageHeader>
 	<columnHeader>
 		<band height="28">
 			<staticText>

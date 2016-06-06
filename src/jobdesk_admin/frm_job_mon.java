@@ -42,6 +42,10 @@ public class frm_job_mon extends javax.swing.JFrame {
     private boolean cedit=false;
     private Date tgledit;
     private String jobnum;
+    private String bulantahun;
+    
+    private int isilst=0;
+    
     private  UtilJob tgl=new UtilJob();
     /**
      * Creates new form frm_job_mon
@@ -52,12 +56,28 @@ public class frm_job_mon extends javax.swing.JFrame {
         initComponents();
         try {
 
+            //hide cari berdasarkan Date_creation kga kepake
+            dt_cari_creation.setVisible(false);
+            jLabel13.setVisible(false);
+            
+            
             dat = new Crud_Job();
             dat.readRecPIC();
 
             txt_tahun.setEditor(new JSpinner.NumberEditor(txt_tahun,"#"));
             
             txt_tahun.setValue(Integer.parseInt(tgl.GetDate("tahun")));
+            
+            cmb_cari_bulan.setSelectedItem(tgl.ConvBulan(Integer.parseInt(tgl.GetDate("bulan"))));
+            
+           
+            //cetak init perbulan
+            txt_tahun1.setEditor(new JSpinner.NumberEditor(txt_tahun,"#"));
+            
+            txt_tahun1.setValue(Integer.parseInt(tgl.GetDate("tahun")));
+            
+            cmb_cari_bulan1.setSelectedItem(tgl.ConvBulan(Integer.parseInt(tgl.GetDate("bulan"))));
+            
             
 //            txt_tahun_cetak.setEditor(new JSpinner.NumberEditor(txt_tahun_cetak,"#"));
 //            
@@ -66,6 +86,14 @@ public class frm_job_mon extends javax.swing.JFrame {
             
             dat = new Crud_Job();
             dat.readRec_selesai(tgl.GetDate("tahun")+"-"+tgl.GetDate("bulan"));
+            
+            bulantahun=tgl.GetDate("tahun")+"-"+tgl.GetDate("bulan");
+            
+            
+           // bulantahun=txt_tahun.getValue()+"-"+tgl.GetAngkaBulan(cmb_cari_bulan.getSelectedIndex());
+            
+            System.out.println("tesss:"+bulantahun);
+            
             
             
             tbl_users.setModel(dat.modelselesai);
@@ -165,6 +193,7 @@ public class frm_job_mon extends javax.swing.JFrame {
         lbl_priorty = new javax.swing.JLabel();
         ck_aprove = new javax.swing.JCheckBox();
         ck_selesai = new javax.swing.JCheckBox();
+        bt_cetak1 = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -183,7 +212,8 @@ public class frm_job_mon extends javax.swing.JFrame {
         txt_cari_desc = new javax.swing.JTextField();
         bt_cetak_perbulan = new javax.swing.JButton();
         dt_cetak_pertgl = new com.toedter.calendar.JDateChooser();
-        dt_cetak_perbulan = new com.toedter.calendar.JDateChooser();
+        cmb_cari_bulan1 = new javax.swing.JComboBox();
+        txt_tahun1 = new javax.swing.JSpinner();
         lbl_tgl_activ = new javax.swing.JLabel();
         cmb_cari_bulan = new javax.swing.JComboBox();
         txt_tahun = new javax.swing.JSpinner();
@@ -252,13 +282,13 @@ public class frm_job_mon extends javax.swing.JFrame {
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {},
+                {},
+                {},
+                {}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+
             }
         ));
         jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -348,6 +378,13 @@ public class frm_job_mon extends javax.swing.JFrame {
             }
         });
 
+        bt_cetak1.setText("Cetak Data ");
+        bt_cetak1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_cetak1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -362,6 +399,7 @@ public class frm_job_mon extends javax.swing.JFrame {
                     .addComponent(lbl_pic, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(46, 46, 46)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(bt_cetak1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_req, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -438,6 +476,8 @@ public class frm_job_mon extends javax.swing.JFrame {
                         .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bt_cetak1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -480,7 +520,7 @@ public class frm_job_mon extends javax.swing.JFrame {
 
         jLabel13.setText("Date Creation");
 
-        jLabel12.setText("Status Finish");
+        jLabel12.setText("Status Selesai");
 
         buttonGroup2.add(jRadioButton1);
         jRadioButton1.setText("Selesai (ok)");
@@ -544,6 +584,19 @@ public class frm_job_mon extends javax.swing.JFrame {
             }
         });
 
+        cmb_cari_bulan1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember" }));
+        cmb_cari_bulan1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_cari_bulan1ActionPerformed(evt);
+            }
+        });
+
+        txt_tahun1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                txt_tahun1StateChanged(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -565,20 +618,27 @@ public class frm_job_mon extends javax.swing.JFrame {
                             .addComponent(jRadioButton3)
                             .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jRadioButton4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(dt_cari_creation, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(bt_refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(0, 1, Short.MAX_VALUE)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(dt_cari_creation, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(bt_refresh, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(bt_cetak_pertgl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bt_cetak_perbulan, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
                     .addComponent(dt_cetak_pertgl, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bt_cetak, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(dt_cetak_perbulan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(cmb_cari_bulan1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txt_tahun1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -593,11 +653,8 @@ public class frm_job_mon extends javax.swing.JFrame {
                         .addGap(5, 5, 5)
                         .addComponent(dt_cetak_pertgl, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(bt_cetak_perbulan)
-                            .addComponent(bt_refresh))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(dt_cetak_perbulan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(bt_cetak_perbulan)
+                        .addGap(31, 31, 31))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -612,14 +669,17 @@ public class frm_job_mon extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jRadioButton2)
-                                    .addComponent(jRadioButton4)))
+                                    .addComponent(jRadioButton4)
+                                    .addComponent(bt_refresh)))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGap(15, 15, 15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(dt_cari_creation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(44, 44, 44)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel23)
-                            .addComponent(txt_cari_desc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txt_cari_desc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmb_cari_bulan1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_tahun1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -675,7 +735,7 @@ public class frm_job_mon extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -691,15 +751,15 @@ public class frm_job_mon extends javax.swing.JFrame {
                             .addComponent(lbl_tgl_activ)
                             .addComponent(cmb_cari_bulan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txt_tahun, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(9, 9, 9)
+                        .addGap(18, 18, 18)
                         .addComponent(jScrollPane5))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -755,7 +815,7 @@ public class frm_job_mon extends javax.swing.JFrame {
                     .addComponent(txt_pwd_baru, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(bt_save2)
-                .addContainerGap(463, Short.MAX_VALUE))
+                .addContainerGap(468, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Ubah Password", jPanel2);
@@ -856,8 +916,13 @@ private void CekGantiPass(){
         lbl_user_list.setText(tbl_users.getModel().getValueAt(row, 1).toString());
          try {
              dat=new Crud_Job();
-             dat.readJobactiv(lbl_user_list.getText());
+             
+             System.out.println("Trace:"+txt_tahun.getValue()+"-"+tgl.GetAngkaBulan(cmb_cari_bulan.getSelectedIndex()));
+             dat.readJobactiv(lbl_user_list.getText(),txt_tahun.getValue()+"-"+tgl.GetAngkaBulan(cmb_cari_bulan.getSelectedIndex()));
              jTable2.setModel(dat.model);
+             
+             isilst=dat.model.getRowCount();
+             
          } catch (Exception ex) {
              Logger.getLogger(frm_job_mon.class.getName()).log(Level.SEVERE, null, ex);
          }
@@ -870,7 +935,7 @@ private void CekGantiPass(){
     private void refUser(){
         try {
             dat=new Crud_Job();
-             dat.readJobactiv(lbl_user_list.getText());
+             dat.readJobactiv(lbl_user_list.getText(),bulantahun);
              jTable2.setModel(dat.model);
         } catch (Exception ex) {
             Logger.getLogger(frm_job_mon.class.getName()).log(Level.SEVERE, null, ex);
@@ -935,31 +1000,33 @@ private void CekGantiPass(){
 
     private void txt_tahunStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_txt_tahunStateChanged
         // TODO add your handling code here:
+        bulantahun=txt_tahun.getValue()+"-"+tgl.GetAngkaBulan(cmb_cari_bulan.getSelectedIndex());
         cari_filter();
     }//GEN-LAST:event_txt_tahunStateChanged
 
     private void cmb_cari_bulanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_cari_bulanActionPerformed
         // TODO add your handling code here:
+        bulantahun=txt_tahun.getValue()+"-"+tgl.GetAngkaBulan(cmb_cari_bulan.getSelectedIndex());
         cari_filter();
     }//GEN-LAST:event_cmb_cari_bulanActionPerformed
 
     private void bt_cetak_perbulanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cetak_perbulanActionPerformed
         // TODO add your handling code here:
-          if(dt_cetak_perbulan.getDate()!=null)  {
+      //    if(dt_cetak_perbulan.getDate()!=null)  {
             try {
                 dat = new Crud_Job();
 
-                dat.CetakPerBulan(convertToDateF(dt_cetak_perbulan.getDate()));
+                dat.CetakPerBulan(txt_tahun1.getValue()+"-"+tgl.GetAngkaBulan(cmb_cari_bulan1.getSelectedIndex()));
 
             } catch (Exception e2) {
                 // TODO Auto-generated catch block
                 e2.printStackTrace();
             }
-        }
-        else{
-
-            JOptionPane.showMessageDialog(null, "Tanggal Pencarian Kosong!");
-        }
+//        }
+//        else{
+//
+//            JOptionPane.showMessageDialog(null, "Tanggal Pencarian Kosong!");
+//        }
     }//GEN-LAST:event_bt_cetak_perbulanActionPerformed
 
     private void txt_cari_descKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_cari_descKeyReleased
@@ -988,8 +1055,10 @@ private void CekGantiPass(){
         try {
             // TODO add your handling code here:
             dat=new Crud_Job();
-            dat.readRecStat("no", 1,lbl_user_list.getText());
+            dat.readRecStat("no", 1,lbl_user_list.getText(),bulantahun);
             jTable2.setModel(dat.model);
+            
+             isilst=dat.model.getRowCount();
 
         } catch (Exception ex) {
             Logger.getLogger(frm_job_mon.class.getName()).log(Level.SEVERE, null, ex);
@@ -1001,9 +1070,10 @@ private void CekGantiPass(){
         try {
             // TODO add your handling code here:
             dat=new Crud_Job();
-            dat.readRecStat("ok", 1,lbl_user_list.getText());
+            dat.readRecStat("ok", 1,lbl_user_list.getText(),bulantahun);
             jTable2.setModel(dat.model);
 
+             isilst=dat.model.getRowCount();
         } catch (Exception ex) {
             Logger.getLogger(frm_job_mon.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1013,8 +1083,9 @@ private void CekGantiPass(){
         try {
             // TODO add your handling code here:
             dat=new Crud_Job();
-            dat.readRecStat("no", 0,lbl_user_list.getText());
+            dat.readRecStat("no", 0,lbl_user_list.getText(),bulantahun);
             jTable2.setModel(dat.model);
+             isilst=dat.model.getRowCount();
         } catch (Exception ex) {
             Logger.getLogger(frm_job_mon.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -1025,8 +1096,11 @@ private void CekGantiPass(){
         try {
             // TODO add your handling code here:
             dat=new Crud_Job();
-            dat.readRecStat("ok", 0,lbl_user_list.getText());
+            dat.readRecStat("ok", 0,lbl_user_list.getText(),bulantahun);
             jTable2.setModel(dat.model);
+            
+             isilst=dat.model.getRowCount();
+            
 
         } catch (Exception ex) {
             Logger.getLogger(frm_job_mon.class.getName()).log(Level.SEVERE, null, ex);
@@ -1057,7 +1131,9 @@ private void CekGantiPass(){
             try {
                 dat = new Crud_Job();
 
-                dat.CetakAll();
+                
+                
+                dat.CetakAll(lbl_selesai.getText());
 
             } catch (Exception e2) {
                 // TODO Auto-generated catch block
@@ -1188,7 +1264,28 @@ private void CekGantiPass(){
         if(evt.getClickCount()==2){
             getUser();
         }
+        
     }//GEN-LAST:event_tbl_usersMouseReleased
+
+    private void cmb_cari_bulan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_cari_bulan1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmb_cari_bulan1ActionPerformed
+
+    private void txt_tahun1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_txt_tahun1StateChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_tahun1StateChanged
+
+    private void bt_cetak1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cetak1ActionPerformed
+        // TODO add your handling code here:
+        System.out.println(isilst);
+        
+        if(isilst>=1){
+           JOptionPane.showMessageDialog(null, "Ok sip!");
+        }
+        else{
+         JOptionPane.showMessageDialog(null, "Data User List JObs Kosong!");
+        }
+    }//GEN-LAST:event_bt_cetak1ActionPerformed
 
     private void filtertbl(){
         try {
@@ -1202,8 +1299,11 @@ private void CekGantiPass(){
 //         
          if (txt_cari_desc.getText()!=null) {
              
-              dat.FilterJobactiv(lbl_user_list.getText(),txt_cari_desc.getText());
+              dat.FilterJobactiv(lbl_user_list.getText(),txt_cari_desc.getText(),bulantahun);
               jTable2.setModel(dat.modelfilter);
+              
+              isilst=dat.modelfilter.getRowCount();
+              
 //               jTable2.setRowSorter(sorter);
 //               sorter.setRowFilter(null);
 //             } else {
@@ -1217,8 +1317,10 @@ private void CekGantiPass(){
              }
          else{
          
-          dat.readJobactiv(lbl_user_list.getText());
+          dat.readJobactiv(lbl_user_list.getText(),bulantahun);
               jTable2.setModel(dat.model);
+              
+              isilst=dat.model.getRowCount();
          }
          
             
@@ -1308,7 +1410,7 @@ private void CekGantiPass(){
         try {
             dat = new Crud_Job();
 
-            dat.readRec(convertToDateF(dt_cari_creation.getDate()));
+            dat.readRec(convertToDateF(dt_cari_creation.getDate()),lbl_user_list.getText());
 
         } catch (Exception e2) {
             // TODO Auto-generated catch block
@@ -1456,6 +1558,7 @@ private void CekGantiPass(){
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_cetak;
+    private javax.swing.JButton bt_cetak1;
     private javax.swing.JButton bt_cetak_perbulan;
     private javax.swing.JButton bt_cetak_pertgl;
     private javax.swing.JButton bt_refresh;
@@ -1465,8 +1568,8 @@ private void CekGantiPass(){
     private javax.swing.JCheckBox ck_aprove;
     private javax.swing.JCheckBox ck_selesai;
     private javax.swing.JComboBox cmb_cari_bulan;
+    private javax.swing.JComboBox cmb_cari_bulan1;
     private com.toedter.calendar.JDateChooser dt_cari_creation;
-    private com.toedter.calendar.JDateChooser dt_cetak_perbulan;
     private com.toedter.calendar.JDateChooser dt_cetak_pertgl;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1518,6 +1621,7 @@ private void CekGantiPass(){
     private javax.swing.JPasswordField txt_pwd_baru;
     private javax.swing.JPasswordField txt_pwd_lama;
     private javax.swing.JSpinner txt_tahun;
+    private javax.swing.JSpinner txt_tahun1;
     private javax.swing.JTextField txt_username;
     // End of variables declaration//GEN-END:variables
 }
