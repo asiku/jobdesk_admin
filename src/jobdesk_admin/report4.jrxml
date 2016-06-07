@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="bd5b3c51-f988-45dc-9b06-8bb5ecff6baf">
-	<property name="ireport.zoom" value="2.0"/>
+	<property name="ireport.zoom" value="4.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="328"/>
 	<parameter name="tgl_r" class="java.lang.String">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -216,6 +216,9 @@ WHERE
 				</textElement>
 				<text><![CDATA[selesai]]></text>
 			</staticText>
+			<line>
+				<reportElement x="2" y="1" width="553" height="1" uuid="d0ed2ce8-e391-4647-bd5d-0dc89fa18b00"/>
+			</line>
 		</band>
 	</columnHeader>
 	<detail>
