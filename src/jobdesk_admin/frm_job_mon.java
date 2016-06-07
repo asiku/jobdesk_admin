@@ -1536,6 +1536,10 @@ private void CekGantiPass(){
             
             lbl_aprove.setText(Crud_Job.apv);
             lbl_selesai.setText(Crud_Job.fin);
+             dat = new Crud_Job();
+            dat.readJobactiv(lbl_user_list.getText(),bulantahun);
+            jTable2.setModel(dat.model);
+            
         } catch (Exception ex) {
             Logger.getLogger(frm_job_mon.class.getName()).log(Level.SEVERE, null, ex);
         }
