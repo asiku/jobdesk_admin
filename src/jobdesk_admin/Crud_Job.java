@@ -989,6 +989,100 @@ public class Crud_Job extends DBkoneksi {
       }
     }
     
+   public void readRecperSelesaitgluser(String tgl,String stat,String username) throws SQLException {
+
+        
+    if(stat.equals("no")){    
+          preparedStatement = connect.prepareStatement("select ifnull(count(jobactive.status_selesai), 0) AS belumselesai from " + job_helper.TB_NAME
+                + " where " + job_helper.KEY_STAT_SELESAI + "=? and jobactive.username<>'root' and "+job_helper.KEY_DATE_CREATION+" like ? and "+ job_helper.KEY_USERNAME+"=?");
+        
+        preparedStatement.setString(1,stat);
+        preparedStatement.setString(2,"%" + tgl + "%");
+        preparedStatement.setString(3,username);
+        
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+
+        int i = 0;
+
+        while (resultSet.next()) {
+
+            
+           fin = resultSet.getString(v_result_helper.KEY_BSELESAI);
+
+        }
+    
+      }
+       else if(stat.equals("ok")){
+               preparedStatement = connect.prepareStatement("select ifnull(count(jobactive.status_selesai), 0) AS sudahselesai from " + job_helper.TB_NAME
+                + " where " + job_helper.KEY_STAT_SELESAI + "=? and jobactive.username<>'root' and "+job_helper.KEY_DATE_CREATION+" like ? and "+ job_helper.KEY_USERNAME+"=?");
+        
+        preparedStatement.setString(1,stat);
+        preparedStatement.setString(2,"%" + tgl + "%");
+        preparedStatement.setString(3,username);
+        
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+
+        int i = 0;
+
+        while (resultSet.next()) {
+
+            
+           sfin = resultSet.getString(v_result_helper.KEY_SELESAI);
+
+        }
+           
+      }
+    } 
+    
+   public void readRecperAprovetgluser(String tgl,String stat,String username) throws SQLException {
+
+        
+    if(stat.equals("no")){    
+          preparedStatement = connect.prepareStatement("select ifnull(count(jobactive.status_aprove), 0) AS belumaprove from " + job_helper.TB_NAME
+                + " where " + job_helper.KEY_STAT_APROVE + "=? and jobactive.username<>'root' and "+job_helper.KEY_DATE_CREATION+" like ? and "+ job_helper.KEY_USERNAME+"=?");
+        
+        preparedStatement.setString(1,stat);
+        preparedStatement.setString(2,"%" + tgl + "%");
+        preparedStatement.setString(3,username);
+        
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+
+        int i = 0;
+
+        while (resultSet.next()) {
+
+            
+           apv = resultSet.getString(v_result_helper.KEY_BAPROVE);
+
+        }
+    
+      }
+       else if(stat.equals("ok")){
+              preparedStatement = connect.prepareStatement("select ifnull(count(jobactive.status_aprove), 0) AS sudahaprove from " + job_helper.TB_NAME
+                + " where " + job_helper.KEY_STAT_APROVE + "=? and  jobactive.username<>'root' and "+job_helper.KEY_DATE_CREATION+" like ? and "+ job_helper.KEY_USERNAME+"=?");
+        
+        preparedStatement.setString(1,stat);
+        preparedStatement.setString(2,"%" + tgl + "%");
+        preparedStatement.setString(3,username);
+        
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+
+        int i = 0;
+
+        while (resultSet.next()) {
+
+            
+           sapv = resultSet.getString(v_result_helper.KEY_APROVE);
+
+        }
+           
+      }
+    }  
+    
     public void CetakPerTgl(String tgl) throws JRException {
 
         InputStream is = null;
@@ -1057,5 +1151,46 @@ public class Crud_Job extends DBkoneksi {
         JasperViewer.viewReport(jp, false);
 
 
-    }  
+    }
+  
+public void CetakPerUser(String tgl,String username){
+  
+        InputStream is = null;
+        
+        is = getClass().getResourceAsStream("report4.jrxml");
+
+        //set parameters
+        Map map = new HashMap();
+          try {
+              readRecperAprovetgluser(tgl,"no",username);
+              readRecperAprovetgluser(tgl,"ok",username);
+              readRecperSelesaitgluser(tgl,"no",username);
+              readRecperSelesaitgluser(tgl,"ok",username);
+              
+          } catch (SQLException ex) {
+              Logger.getLogger(Crud_Job.class.getName()).log(Level.SEVERE, null, ex);
+          }
+        
+        map.put("username", username);  
+        map.put("jmlaprove", sapv);   
+        map.put("jmlselesai", sfin);
+        map.put("jmlbelumaprove", apv);
+        map.put("jmlbelumselesai", fin);
+          
+          
+        map.put("tgl_r", tgl);
+       // map.put("Imgpath",null);
+
+        JasperReport jr;
+          try {
+              jr = JasperCompileManager.compileReport(is);
+               JasperPrint jp = JasperFillManager.fillReport(jr, map, connect);
+               JasperViewer.viewReport(jp, false);
+          } catch (JRException ex) {
+              Logger.getLogger(Crud_Job.class.getName()).log(Level.SEVERE, null, ex);
+          }
+
+       
+ 
+}  
 }

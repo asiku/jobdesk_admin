@@ -1280,7 +1280,15 @@ private void CekGantiPass(){
         System.out.println(isilst);
         
         if(isilst>=1){
-           JOptionPane.showMessageDialog(null, "Ok sip!");
+           try {
+                dat = new Crud_Job();
+
+                dat.CetakPerUser(txt_tahun.getValue()+"-"+tgl.GetAngkaBulan(cmb_cari_bulan.getSelectedIndex()),lbl_user_list.getText());
+
+            } catch (Exception e2) {
+                // TODO Auto-generated catch block
+                e2.printStackTrace();
+            }
         }
         else{
          JOptionPane.showMessageDialog(null, "Data User List JObs Kosong!");

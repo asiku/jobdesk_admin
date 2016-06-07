@@ -28,7 +28,7 @@ FROM
      `jobactive` jobactive
 WHERE
      username <> 'root'
-     and left(Date_Creation,7) = $P{tgl_r}]]>
+     and left(Date_Creation,7) = $P{tgl_r} and username=$P{username}]]>
 	</queryString>
 	<field name="jobnum" class="java.lang.Integer">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -66,20 +66,6 @@ WHERE
 	<field name="status_selesai" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
 	</field>
-	<group name="username">
-		<groupExpression><![CDATA[$F{username}]]></groupExpression>
-		<groupHeader>
-			<band height="25">
-				<rectangle radius="10">
-					<reportElement x="-3" y="2" width="112" height="20" uuid="3eaf53df-ef63-4069-af53-9fd7c08495d0"/>
-				</rectangle>
-				<textField>
-					<reportElement x="0" y="5" width="100" height="20" uuid="06d3c4c7-00ff-47c3-b524-a1e8898e65c8"/>
-					<textFieldExpression><![CDATA[$F{username}]]></textFieldExpression>
-				</textField>
-			</band>
-		</groupHeader>
-	</group>
 	<background>
 		<band/>
 	</background>
@@ -97,7 +83,7 @@ WHERE
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Per Bulan]]></text>
+				<text><![CDATA[Per User]]></text>
 			</staticText>
 			<line>
 				<reportElement x="409" y="51" width="131" height="1" uuid="8c09bb8d-ab63-49e4-8d4c-f0a337bf1191"/>
@@ -128,13 +114,9 @@ WHERE
 				<reportElement x="411" y="104" width="68" height="20" uuid="1d555225-1c3b-4f87-ac18-643822515e47"/>
 				<text><![CDATA[Belum Selesai]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="4" y="102" width="105" height="20" uuid="1f6d1ee8-b842-41c8-a4ca-7a894bd8a6a2"/>
-				<textFieldExpression><![CDATA[$P{tgl_r}]]></textFieldExpression>
-			</textField>
 			<staticText>
-				<reportElement x="4" y="77" width="72" height="20" uuid="e3b661d7-04ca-4031-8887-7cd9d8e78eca"/>
-				<text><![CDATA[Date Creation :]]></text>
+				<reportElement x="1" y="85" width="72" height="20" uuid="e3b661d7-04ca-4031-8887-7cd9d8e78eca"/>
+				<text><![CDATA[User Name :]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="409" y="30" width="34" height="20" uuid="9d2f9b6b-07c7-4191-af89-dbaedb523eed"/>
@@ -159,6 +141,10 @@ WHERE
 				<reportElement x="482" y="103" width="64" height="20" uuid="cda8fff7-682e-43f6-8838-47664911f909"/>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$P{jmlbelumselesai}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="110" width="100" height="20" uuid="06d3c4c7-00ff-47c3-b524-a1e8898e65c8"/>
+				<textFieldExpression><![CDATA[$P{username}]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>
