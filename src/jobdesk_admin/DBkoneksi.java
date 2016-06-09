@@ -20,8 +20,7 @@ public class DBkoneksi {
 		// Setup the connection with the DB
 
 		String urlcon = "jdbc:mysql://192.168.2.124:3306/jobdb";
-//		String user = "root";
-//		String pwd = "asusa45v";
+
 		String user = "mrsjane";
 		String pwd = "mrsjane123";
 		connect = DriverManager.getConnection(urlcon, user, pwd);
